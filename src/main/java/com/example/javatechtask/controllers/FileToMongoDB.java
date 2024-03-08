@@ -25,4 +25,9 @@ public class FileToMongoDB {
         return "Add See html test 77777 !!! " + jsonToMongoDB.JsToMoDB();
     }
 
+    @GetMapping("/a")
+    public String addJson() {
+        jsonToMongoDB.JsMoDBTest();
+        return "Add See html test йй !!! " + jsonToMongoDB.JsToMoDB();
+    }
 }
