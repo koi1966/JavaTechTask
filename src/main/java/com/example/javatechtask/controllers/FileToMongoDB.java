@@ -1,32 +1,28 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.Servise.JsonToMongoDB;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@Slf4j
+@RestController
+@RequiredArgsConstructor
 public class FileToMongoDB {
 
     private final JsonToMongoDB jsonToMongoDB;
+//    private final MongoDBExample mongoDBExample;
 
-    public FileToMongoDB(JsonToMongoDB jsonToMongoDB) {
-        this.jsonToMongoDB = jsonToMongoDB;
-    }
+    // Lombok autowired - сам внедрил конструктор
+//    public FileToMongoDB(JsonToMongoDB jsonToMongoDB) {
+//        this.jsonToMongoDB = jsonToMongoDB;
+//    }
 
     @GetMapping("/add")
     public String addJsonToMongoDB() {
-        jsonToMongoDB.JsToMoDB();
-
-        return "Add See html test !!!";
+//        jsonToMongoDB.JsMoDBTest();
+        return "Add See html test 77777 !!! " + jsonToMongoDB.JsToMoDB();
     }
 
-    @PutMapping("/add")
-    public String adJsonToMongoDB() {
-        jsonToMongoDB.JsToMoDB();
-
-        return "Add See html test !!!";
-    }
 }
