@@ -1,30 +1,25 @@
 package com.example.javatechtask.Servise;
 
 //import com.example.javatechtask.bd.MongoConfig;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+import com.example.javatechtask.bd.MongoConfig;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
 
 @Component
 public class JsonToMongoDB {
+    private final MongoTemplate mongoTemplate;
 
-//    private final MongoConfig mongoConfig;
-//
-//    public JsonToMongoDB(MongoConfig mongoConfig) {
-//        this.mongoConfig = mongoConfig;
-//    }
+
+    public JsonToMongoDB(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+
+    }
 
     public void JsToMoDB() {
 
+        Boolean aga = mongoTemplate.collectionExists("report");
+        System.out.println("+++++++++++++++"+ aga);
+//        mongoTemplate.findById();
         // Создание клиента MongoDB
 
 //        MongoClient mongoClient = (MongoClient) MongoClients.create("mongodb://localhost:27017");
