@@ -30,4 +30,11 @@ public class FileToMongoDB {
         jsonToMongoDB.JsMoDBTest();
         return "Add See html test йй !!! " + jsonToMongoDB.JsToMoDB();
     }
+
+    @GetMapping("/p")
+    public String addPerson() {
+        jsonToMongoDB.addPerson();
+        return "Add See html test йй !!! " ;
+    }
+
 }

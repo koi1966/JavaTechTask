@@ -18,6 +18,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         return "newdb";
     }
 
+
     @Override
     public MongoClient mongoClient() {
 
@@ -25,11 +26,12 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();
-//            MongoDatabase database = mongoClient.getDatabase("newdb")//;
-//          MongoCollection<Document> collection = database.getCollection("users");
 
         return MongoClients.create(mongoClientSettings);
     }
+//            MongoDatabase database = mongoClient.getDatabase("newdb")//;
+//          MongoCollection<Document> collection = database.getCollection("users");
+
 //        try (MongoClient mongoClient = new MongoClient("localhost", 27017)) {
 //            MongoDatabase database = mongoClient.getDatabase("newdb");
 //            MongoCollection<Document> collection = database.getCollection("users");

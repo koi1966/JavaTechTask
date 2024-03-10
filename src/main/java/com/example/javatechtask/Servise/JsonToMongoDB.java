@@ -7,6 +7,8 @@ import org.bson.Document;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
+import static com.example.javatechtask.bd.ConfigM.collection;
+
 @Component
 public class JsonToMongoDB {
     private final MongoTemplate mongoTemplate;
@@ -48,5 +50,10 @@ public class JsonToMongoDB {
 //        }
     }
 
+    public void addPerson(){
+        MongoCollection<Document> collection1 = mongoTemplate.getCollection("report");
+        collection1.insertOne(new Document("money",6));
+        System.out.println(";k;k;l");
+    }
 
 }
