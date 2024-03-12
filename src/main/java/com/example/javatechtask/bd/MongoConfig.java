@@ -1,15 +1,11 @@
 package com.example.javatechtask.bd;
 
-import com.example.javatechtask.models.Pojo;
 import com.mongodb.ConnectionString;
-import com.mongodb.MongoClient;
+
 import com.mongodb.MongoClientSettings;
-import com.mongodb.MongoClientURI;
-//import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import org.bson.codecs.configuration.CodecRegistries;
-import org.bson.codecs.pojo.PojoCodecProvider;
+import org.bson.UuidRepresentation;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
@@ -24,11 +20,13 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     }
 
     @Override
-    public com.mongodb.client.MongoClient mongoClient() {
+//    public com.mongodb.client.MongoClient mongoClient() {
+    public MongoClient mongoClient() {
 
         ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
+                .uuidRepresentation(UuidRepresentation.STANDARD)
                 .build();
 
         return MongoClients.create(mongoClientSettings);

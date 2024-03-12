@@ -39,17 +39,7 @@ public class JsonToMongoDB {
     }
 
     public void JsMoDBTest() {
-        MongoClient mongoClient = new MongoClient();
 
-//        DB db = mongoClient.;
-//        DBCollection coll = db.getCollection("users");
-//        BasicDBObject query = new BasicDBObject("_id", "65e82f4800c3824bb814dfcd");
-
-//        try (DBCursor cursor = coll.find(query)) {
-//            while (cursor.hasNext()) {
-//                System.out.println(cursor.next());
-//            }
-//        }
     }
 
     public void addPerson(){
@@ -76,6 +66,7 @@ public class JsonToMongoDB {
 //                new Document("name","Nataly")  // edit this field "name" to a new value "Nataly"
 //        ));
 //
+//        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
         Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
         mongoTemplate.insert(save);
 
