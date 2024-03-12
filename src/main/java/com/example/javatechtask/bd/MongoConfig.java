@@ -23,7 +23,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 //    public com.mongodb.client.MongoClient mongoClient() {
     public MongoClient mongoClient() {
 
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
+        ConnectionString connectionString = new ConnectionString(MONGO_URL);
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .uuidRepresentation(UuidRepresentation.STANDARD)

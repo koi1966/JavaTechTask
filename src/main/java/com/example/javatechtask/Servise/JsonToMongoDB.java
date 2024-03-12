@@ -2,7 +2,6 @@ package com.example.javatechtask.Servise;
 
 import com.example.javatechtask.models.Pojo;
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;

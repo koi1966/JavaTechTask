@@ -1,6 +1,5 @@
 package com.example.javatechtask.models.repository;
 
-import com.example.javatechtask.models.Dog;
 import com.example.javatechtask.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
