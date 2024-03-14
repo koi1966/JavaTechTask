@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 import java.util.UUID;
 
-@Setter
-@Getter
+//@Setter
+//@Getter
 @Document(collection = "salesAndTrafficReports")
 public class SalesAndTrafficReport {
 
