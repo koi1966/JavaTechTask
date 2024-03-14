@@ -20,9 +20,9 @@ public class ReportSpecific {
     private final ReportRepo reportRepo;
 
     @GetMapping("date")
-    public ResponseEntity<ReportRepo> getReportByDate(@RequestParam String date){
+    public ResponseEntity<ReportRepo> getReportByDate(@RequestParam String date) {
 
-        var reports =reportRepo.findBySalesAndTrafficByDate_Date(date);
+        var reports = reportRepo.findBySalesAndTrafficByDate_Date(date);
         if (reports == null) {
             return ResponseEntity
                     .status(HttpStatusCode.valueOf(404))
@@ -30,4 +30,5 @@ public class ReportSpecific {
         }
         return new ResponseEntity<>(reports, HttpStatusCode.valueOf(200));
 
+    }
 }
