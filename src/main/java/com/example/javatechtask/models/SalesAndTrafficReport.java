@@ -20,6 +20,44 @@ public class SalesAndTrafficReport {
     private List<SalesAndTrafficByDate> salesAndTrafficByDate;
     private List<SalesAndTrafficByAsin> salesAndTrafficByAsin;
 
-    // Constructors, getters, setters
+    public SalesAndTrafficReport(UUID id, ReportSpecification reportSpecification, List<SalesAndTrafficByDate> salesAndTrafficByDate, List<SalesAndTrafficByAsin> salesAndTrafficByAsin) {
+
+        this.id = id;
+        this.reportSpecification = reportSpecification;
+        this.salesAndTrafficByDate = salesAndTrafficByDate;
+        this.salesAndTrafficByAsin = salesAndTrafficByAsin;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public ReportSpecification getReportSpecification() {
+        return reportSpecification;
+    }
+
+    public void setReportSpecification(ReportSpecification reportSpecification) {
+        this.reportSpecification = reportSpecification;
+    }
+
+    public List<SalesAndTrafficByDate> getSalesAndTrafficByDate() {
+        return salesAndTrafficByDate;
+    }
+
+    public void setSalesAndTrafficByDate(List<SalesAndTrafficByDate> salesAndTrafficByDate) {
+        this.salesAndTrafficByDate = salesAndTrafficByDate;
+    }
+
+    public List<SalesAndTrafficByAsin> getSalesAndTrafficByAsin() {
+        return salesAndTrafficByAsin;
+    }
+
+    public void setSalesAndTrafficByAsin(List<SalesAndTrafficByAsin> salesAndTrafficByAsin) {
+        this.salesAndTrafficByAsin = salesAndTrafficByAsin;
+    }
 }
 
