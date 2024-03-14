@@ -37,3 +37,11 @@
     "roles": "ROLE_USER",
     "valid": true
 }
+{
+    "id":null,
+    "name":"admin3",
+    "password":"admin3",
+    "email":"koi1966@ukr.net",
+    "roles":"RELE_ADMIN, ROLE_USER",
+    "valid":"true"
+    }

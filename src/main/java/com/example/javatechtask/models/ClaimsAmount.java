@@ -5,9 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ReportOptions {
-
-    private String dateGranularity;
-    private String asinGranularity;
-
+public class ClaimsAmount {
+    private double amount;
+    private String currencyCode;
 }

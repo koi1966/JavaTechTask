@@ -1,8 +1,12 @@
 package com.example.javatechtask.models;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class SalesAndTrafficByDate {
-
+    private String date;
+    private SalesByDate salesByDate;
+    private TrafficByDate trafficByDate;
 }

@@ -1,7 +1,13 @@
 package com.example.javatechtask.models;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class SalesAndTrafficByAsin {
+
+    private String parentAsin;
+    private SalesByAsin salesByAsin;
+    private TrafficByAsin trafficByAsin;
 }

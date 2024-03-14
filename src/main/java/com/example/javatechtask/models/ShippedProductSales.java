@@ -1,0 +1,13 @@
+package com.example.javatechtask.models;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class ShippedProductSales {
+
+    private Double amount;
+    private String currencyCode;
+
+}
