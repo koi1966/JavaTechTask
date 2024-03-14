@@ -13,15 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Getter
 @RestController
-@RequestMapping("/report")
+@RequestMapping("/r")
 @RequiredArgsConstructor
 public class ReportSpecific {
     private final ReportRepo reportRepo;
 
-    @GetMapping("/date")
+    @GetMapping("/d")
     public ResponseEntity<SalesAndTrafficReport> getReportByDate(@RequestParam String date) {
 
-        SalesAndTrafficReport reports = reportRepo.findBySalesAndTrafficByDate_Date(date);
+//        SalesAndTrafficReport reports = reportRepo.findByReportSpecificationDataStartTime(date);
+        SalesAndTrafficReport reports = reportRepo.findBySalesAndTrafficByDateDate(date);
         if (reports == null) {
             return ResponseEntity
                     .status(HttpStatusCode.valueOf(404))

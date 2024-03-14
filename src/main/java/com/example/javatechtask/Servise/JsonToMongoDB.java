@@ -1,6 +1,7 @@
 package com.example.javatechtask.Servise;
 
 import com.example.javatechtask.models.Pojo;
+import com.example.javatechtask.models.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -66,8 +67,8 @@ public class JsonToMongoDB {
 //        ));
 //
 //        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
-        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
-        mongoTemplate.insert(save);
+//        User save = new User(50, "test", User.role.STANDART);
+//        mongoTemplate.insert(save);
 
     }
 
