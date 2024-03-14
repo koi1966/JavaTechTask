@@ -1,7 +1,5 @@
 package com.example.javatechtask.controllers;
 
-
-import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.ReportRepo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
