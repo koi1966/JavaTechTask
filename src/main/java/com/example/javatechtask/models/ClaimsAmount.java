@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class SalesAndTrafficByAsin {
-
+public class ClaimsAmount {
+    private double amount;
+    private String currencyCode;
 }

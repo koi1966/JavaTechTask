@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class SalesAndTrafficByAsin {
-
+public class MarketplaceIds {
+    public String marketplaceIds;
 }

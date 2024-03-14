@@ -1,10 +1,5 @@
 package com.example.javatechtask.models;
 
-
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 //@Data
 ////@Entity("salesAndTrafficReport")
 //@Document
@@ -13,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 //    @Id
 //    private String id;
 //
-////    @Embedded
+//    @Embedded
 //    public static class ReportOptions {
 //        private String dateGranularity;
 //        private String asinGranularity;
@@ -41,8 +36,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 //        private OrderedProductSales shippedProductSales;
 //        private int unitsShipped;
 //        private int ordersShipped;
-//
-////        @Embedded
+
+//        @Embedded
 //        public static class AverageSalesPerOrderItem {
 //            private double amount;
 //            private String currencyCode;
