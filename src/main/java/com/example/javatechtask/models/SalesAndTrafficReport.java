@@ -17,7 +17,7 @@ public class SalesAndTrafficReport {
     private UUID id;
 
     private ReportSpecification reportSpecification;
-    private List<SalesAndTrafficByDate> salesAndTrafficByDate;
+    private List<com.example.javatechtask.models.salesAndTrafficByDate> salesAndTrafficByDate;
     private List<SalesAndTrafficByAsin> salesAndTrafficByAsin;
 
 }

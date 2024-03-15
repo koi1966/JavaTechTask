@@ -1,0 +1,14 @@
+{
+  "reportSpecification": {
+    "reportType": "GET_SALES_AND_TRAFFIC_REPORT",
+    "reportOptions": {
+      "dateGranularity": "DAY",
+      "asinGranularity": "PARENT"
+    },
+    "dataStartTime": "2024-02-14",
+    "dataEndTime": "2024-02-26",
+    "marketplaceIds": [
+      "ATVPDKIKX0DER"
+    ]
+  }
+}

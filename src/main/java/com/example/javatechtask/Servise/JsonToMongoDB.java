@@ -66,8 +66,8 @@ public class JsonToMongoDB {
 //        ));
 //
 //        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
-        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
-        mongoTemplate.insert(save);
+//        Pojo save = new Pojo(50, "test", Pojo.Role.STANDART);
+//        mongoTemplate.insert(save);
 
     }
 

@@ -1,7 +1,7 @@
 package com.example.javatechtask.controllers;
 
-import com.example.javatechtask.models.SalesAndTrafficReport;
-import com.example.javatechtask.models.repository.ReportRepo;
+import com.example.javatechtask.models.salesAndTrafficByDate;
+import com.example.javatechtask.models.repository.SalesAndTrafficByDateRepo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/report")
 @RequiredArgsConstructor
 public class ReportSpecific {
-    private final ReportRepo reportRepo;
+    private final SalesAndTrafficByDateRepo salesAndTrafficByDateRepo;
 
     @GetMapping("/date")
-    public ResponseEntity<SalesAndTrafficReport> getReportByDate(@RequestParam String date) {
+    public ResponseEntity<salesAndTrafficByDate> getReportByDate(@RequestParam String date) {
 
-        SalesAndTrafficReport reports = reportRepo.findBySalesAndTrafficByDate_Date(date);
+        salesAndTrafficByDate reports = null;// reportRepo.findBySalesandtrafficbydate(date);
+
         if (reports == null) {
             return ResponseEntity
                     .status(HttpStatusCode.valueOf(404))

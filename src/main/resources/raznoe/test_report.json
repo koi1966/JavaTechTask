@@ -85,67 +85,67 @@
         "receivedNegativeFeedbackRate": 0
       }
     },
-    {
-      "date": "2024-02-15",
-      "salesByDate": {
-        "orderedProductSales": {
-          "amount": 11519.48,
-          "currencyCode": "USD"
+      {
+        "date": "2024-02-15",
+        "salesByDate": {
+          "orderedProductSales": {
+            "amount": 11519.48,
+            "currencyCode": "USD"
+          },
+          "orderedProductSalesB2B": {
+            "amount": 166.2,
+            "currencyCode": "USD"
+          },
+          "unitsOrdered": 544,
+          "unitsOrderedB2B": 8,
+          "totalOrderItems": 516,
+          "totalOrderItemsB2B": 8,
+          "averageSalesPerOrderItem": {
+            "amount": 22.32,
+            "currencyCode": "USD"
+          },
+          "averageSalesPerOrderItemB2B": {
+            "amount": 20.78,
+            "currencyCode": "USD"
+          },
+          "averageUnitsPerOrderItem": 1.05,
+          "averageUnitsPerOrderItemB2B": 1,
+          "averageSellingPrice": {
+            "amount": 21.18,
+            "currencyCode": "USD"
+          },
+          "averageSellingPriceB2B": {
+            "amount": 20.78,
+            "currencyCode": "USD"
+          },
+          "unitsRefunded": 13,
+          "refundRate": 2.39,
+          "claimsGranted": 0,
+          "claimsAmount": {
+            "amount": 0,
+            "currencyCode": "USD"
+          },
+          "shippedProductSales": {
+            "amount": 11892.89,
+            "currencyCode": "USD"
+          },
+          "unitsShipped": 576,
+          "ordersShipped": 574
         },
-        "orderedProductSalesB2B": {
-          "amount": 166.2,
-          "currencyCode": "USD"
-        },
-        "unitsOrdered": 544,
-        "unitsOrderedB2B": 8,
-        "totalOrderItems": 516,
-        "totalOrderItemsB2B": 8,
-        "averageSalesPerOrderItem": {
-          "amount": 22.32,
-          "currencyCode": "USD"
-        },
-        "averageSalesPerOrderItemB2B": {
-          "amount": 20.78,
-          "currencyCode": "USD"
-        },
-        "averageUnitsPerOrderItem": 1.05,
-        "averageUnitsPerOrderItemB2B": 1,
-        "averageSellingPrice": {
-          "amount": 21.18,
-          "currencyCode": "USD"
-        },
-        "averageSellingPriceB2B": {
-          "amount": 20.78,
-          "currencyCode": "USD"
-        },
-        "unitsRefunded": 13,
-        "refundRate": 2.39,
-        "claimsGranted": 0,
-        "claimsAmount": {
-          "amount": 0,
-          "currencyCode": "USD"
-        },
-        "shippedProductSales": {
-          "amount": 11892.89,
-          "currencyCode": "USD"
-        },
-        "unitsShipped": 576,
-        "ordersShipped": 574
-      },
-      "trafficByDate": {
-        "browserPageViews": 1825,
-        "browserPageViewsB2B": 61,
-        "mobileAppPageViews": 4558,
-        "mobileAppPageViewsB2B": 32,
-        "pageViews": 6383,
-        "pageViewsB2B": 93,
-        "browserSessions": 1226,
-        "browserSessionsB2B": 38,
-        "mobileAppSessions": 1858,
-        "mobileAppSessionsB2B": 18,
-        "sessions": 3084,
-        "sessionsB2B": 56,
-        "buyBoxPercentage": 98.97,
+        "trafficByDate": {
+          "browserPageViews": 1825,
+          "browserPageViewsB2B": 61,
+          "mobileAppPageViews": 4558,
+          "mobileAppPageViewsB2B": 32,
+          "pageViews": 6383,
+          "pageViewsB2B": 93,
+          "browserSessions": 1226,
+          "browserSessionsB2B": 38,
+          "mobileAppSessions": 1858,
+          "mobileAppSessionsB2B": 18,
+          "sessions": 3084,
+          "sessionsB2B": 56,
+          "buyBoxPercentage": 98.97,
         "buyBoxPercentageB2B": 96.49,
         "orderItemSessionPercentage": 16.73,
         "orderItemSessionPercentageB2B": 14.29,
