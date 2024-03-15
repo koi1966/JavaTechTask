@@ -19,6 +19,6 @@ public class ReportSpecification {
     private ReportOptions reportOptions;
     private String dataStartTime;
     private String dataEndTime;
-    private List<MarketplaceIds> marketplaceIds;
+    private List<String> marketplaceIds;
 
 }
