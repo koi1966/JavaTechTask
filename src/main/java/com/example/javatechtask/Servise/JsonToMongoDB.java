@@ -16,7 +16,7 @@ public class JsonToMongoDB {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public User addFile(){
+    public User addFile() {
 
 
         return null;
@@ -40,14 +40,10 @@ public class JsonToMongoDB {
             System.out.println(" 4444444 --> " + document);
         }
 
-        return "Collection test - 555" ;
+        return "Collection test - 555";
     }
 
-    public void JsFieToMoDB() {
-
-    }
-
-    public void addPerson(){
+    public void addPerson() {
 //        MongoCollection<Document> collection1 = mongoTemplate.getCollection("report");
 //        collection1.insertOne(new Document("money",6));
 //
@@ -76,7 +72,6 @@ public class JsonToMongoDB {
 //        mongoTemplate.insert(save);
 
     }
-
 
 
 }

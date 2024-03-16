@@ -64,8 +64,4 @@ public class ImportJsonService {
         return Arrays.asList(split);
     }
 
-    public void startImport(){
-
-    }
-
 }
