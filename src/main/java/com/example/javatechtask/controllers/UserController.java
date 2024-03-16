@@ -17,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepo userRepo;
+    private final WriteFileJson writeFileJson;
     private User user;
 
     @GetMapping("/all")
@@ -46,7 +47,7 @@ public class UserController {
 
 @PostMapping("/f")
         public User addData(){
-          return  WriteFileJson.addDataFromFile;
+          return  writeFileJson.WriteFileJsonPars();
     }
 
 

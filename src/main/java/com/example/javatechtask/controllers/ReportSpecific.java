@@ -1,7 +1,6 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.models.salesAndTrafficByDate;
-import com.example.javatechtask.models.repository.SalesAndTrafficByDateRepo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;

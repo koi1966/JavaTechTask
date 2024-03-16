@@ -19,6 +19,9 @@ mongoimport --db=newdb --collection=col --file=reportSpecification.json
 mongoimport --db=newdb --collection=col --file=SaleSandTrafficByDate.json
 mongoimport --db=newdb --collection=col --file=SalesAndTrafficByAsin.json
 
+https://www.baeldung.com/java-generate-class-from-json
+https://ru.stackoverflow.com/questions/1250930/%D0%9F%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B8%D0%B7-json-%D0%B2-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-java
+
  */
 @Service
 public class ImportJsonService {
