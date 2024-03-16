@@ -12,5 +12,4 @@ public class JavaTechTaskApplication {
         SpringApplication.run(JavaTechTaskApplication.class, args);
 
     }
-
 }

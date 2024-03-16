@@ -1,23 +1,19 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.Servise.JsonToMongoDB;
+import com.example.javatechtask.models.User;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@Slf4j
+import java.util.UUID;
+
 @RestController
+@RequestMapping("/files")
 @RequiredArgsConstructor
 public class FileToMongoDB {
 
     private final JsonToMongoDB jsonToMongoDB;
-//    private final MongoDBExample mongoDBExample;
 
-    // Lombok autowired - сам внедрил конструктор
-//    public FileToMongoDB(JsonToMongoDB jsonToMongoDB) {
-//        this.jsonToMongoDB = jsonToMongoDB;
-//    }
 
     @GetMapping("/add")
     public String addJsonToMongoDB() {
@@ -25,10 +21,12 @@ public class FileToMongoDB {
         return "Add See html test 77777 !!! " + jsonToMongoDB.JsToMoDB();
     }
 
-    @GetMapping("/a")
-    public String addJson() {
-        jsonToMongoDB.JsMoDBTest();
-        return "Add See html test йй !!! " + jsonToMongoDB.JsToMoDB();
+    @PostMapping
+    public User addJsonFileToMongoDB(){
+
+//        user.setId(UUID.randomUUID());
+
+        return jsonToMongoDB.addFile();
     }
 
     @GetMapping("/p")

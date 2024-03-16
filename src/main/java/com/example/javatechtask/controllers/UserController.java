@@ -1,10 +1,9 @@
 package com.example.javatechtask.controllers;
 
+import com.example.javatechtask.Servise.WriteFileJson;
 import com.example.javatechtask.models.User;
-
 import com.example.javatechtask.models.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepo userRepo;
+    private User user;
 
     @GetMapping("/all")
     public List<User> getAllUsersFromDB(){
@@ -42,6 +42,11 @@ public class UserController {
         user.setId(UUID.randomUUID());
 
         return userRepo.save(user);
+    }
+
+@PostMapping("/f")
+        public User addData(){
+          return  WriteFileJson.addDataFromFile;
     }
 
 

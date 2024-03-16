@@ -1,6 +1,6 @@
 package com.example.javatechtask.Servise;
 
-import com.example.javatechtask.models.Pojo;
+import com.example.javatechtask.models.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -14,6 +14,12 @@ public class JsonToMongoDB {
 
     public JsonToMongoDB(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
+    }
+
+    public User addFile(){
+
+
+        return null;
     }
 
     public String JsToMoDB() {
@@ -37,7 +43,7 @@ public class JsonToMongoDB {
         return "Collection test - 555" ;
     }
 
-    public void JsMoDBTest() {
+    public void JsFieToMoDB() {
 
     }
 

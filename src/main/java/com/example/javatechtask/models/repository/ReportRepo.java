@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 
 public interface ReportRepo extends MongoRepository<SalesAndTrafficReport, String> {
-    SalesAndTrafficReport findBySalesAndTrafficByDate_Date(String date);
+//    SalesAndTrafficReport findBySalesAndTrafficByDate_Date(String date);
 }
 
