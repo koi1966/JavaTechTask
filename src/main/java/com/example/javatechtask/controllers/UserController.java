@@ -1,6 +1,5 @@
 package com.example.javatechtask.controllers;
 
-import com.example.javatechtask.Servise.WriteFileJson;
 import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepo userRepo;
-    private final WriteFileJson writeFileJson;
-    private User user;
+//    private User user;
 
     @GetMapping("/all")
     public List<User> getAllUsersFromDB(){
@@ -45,10 +43,8 @@ public class UserController {
         return userRepo.save(user);
     }
 
-@PostMapping("/f")
-        public User addData(){
-          return  writeFileJson.WriteFileJsonPars();
-    }
+
+
 
 
 }

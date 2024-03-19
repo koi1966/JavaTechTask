@@ -1,15 +1,18 @@
 package com.example.javatechtask.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter
+@Document
 public class SalesByDate {
-
+@JsonIgnore
     private String date;
     private OrderedProductSales orderedProductSales;
-    private OrderedProductSalesB2B shippedProductSalesB2B;
+    private OrderedProductSalesB2B orderedProductSalesB2B   ;
     private int unitsOrdered;
     private int unitsOrderedB2B;
     private int totalOrderItems;

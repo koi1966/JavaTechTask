@@ -13,8 +13,9 @@ import java.util.UUID;
 @Getter
 @Document
 public class ReportSpecification {
-    @Id
-    private UUID id;
+//    @Id
+//    private UUID id;
+private List<ReportSpecification> reportSpecifications;
     private String reportType;
     private ReportOptions reportOptions;
     private String dataStartTime;

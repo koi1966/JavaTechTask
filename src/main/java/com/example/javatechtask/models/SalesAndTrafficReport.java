@@ -10,14 +10,15 @@ import java.util.UUID;
 
 @Setter
 @Getter
-@Document(collection = "salesAndTrafficReports")
+@Document
+//@Document(collection = "salesAndTrafficReports")
 public class SalesAndTrafficReport {
 
-    @Id
-    private UUID id;
+//    @Id
+//    private UUID id;
 
     private ReportSpecification reportSpecification;
-    private List<com.example.javatechtask.models.salesAndTrafficByDate> salesAndTrafficByDate;
+    private List<SalesAndTrafficByDate> salesAndTrafficByDate;
     private List<SalesAndTrafficByAsin> salesAndTrafficByAsin;
 
 }

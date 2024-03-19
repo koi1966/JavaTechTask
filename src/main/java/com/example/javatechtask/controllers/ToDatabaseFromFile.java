@@ -1,23 +1,28 @@
 package com.example.javatechtask.controllers;
 
+import com.example.javatechtask.Servise.WriteFileJson;
+import com.example.javatechtask.models.Employee;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Getter
+import java.io.IOException;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/file")
-//@RequiredArgsConstructor
+
 public class ToDatabaseFromFile {
 
-    private final SalesAndTrafficByDateRepo salesAndTrafficByDateRepo;
+    private final WriteFileJson writeFileJson;
 
-
-    public ToDatabaseFromFile(SalesAndTrafficByDateRepo salesAndTrafficByDateRepo) {
-        this.salesAndTrafficByDateRepo = salesAndTrafficByDateRepo;
-
+    @PostMapping()
+    public Employee addData() throws IOException {
+        writeFileJson.WriteFileJsonPars();
+        return null;
     }
-
 
 }
 
