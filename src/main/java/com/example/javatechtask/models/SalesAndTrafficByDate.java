@@ -1,6 +1,7 @@
 package com.example.javatechtask.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,11 +22,11 @@ public class SalesAndTrafficByDate {
 //    private TrafficByDate trafficByDate;
 
     //    private List<SalesAndTrafficByDate> salesAndTrafficByDate;
-//    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private String date;
-//    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private SalesByDate salesByDate;
-//    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private TrafficByDate trafficByDate;
 //    public List<SalesAndTrafficByDate> getSalesAndTrafficByDate() {
 //        return salesAndTrafficByDate;

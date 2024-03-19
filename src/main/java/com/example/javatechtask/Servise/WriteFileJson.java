@@ -3,6 +3,7 @@ package com.example.javatechtask.Servise;
 import com.example.javatechtask.models.*;
 import com.example.javatechtask.models.repository.EmployeeRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.MongoClient;
 import com.mongodb.client.ClientSession;
@@ -30,29 +31,36 @@ public class WriteFileJson {
         this.employeeRepository = employeeRepository;
     }
     public void WriteFileJsonPars() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
+        ObjectMapper objectMapper = new ObjectMapper();//.findAndRegisterModules();
+
+
 //        MongoCollection<Document> collection = mongoTemplate.getCollection("report11");
         MongoCollection<Document> collection = mongoTemplate.createCollection(ReportSpecification.class);
+//        MongoCollection<Document> collection = mongoTemplate.getCollection("report11");
 
+        //Step 2: Add Jackson Dependency
+// https://www.geeksforgeeks.org/how-to-read-and-write-json-files-in-java/?ref=ml_lbp
+        JsonNode jsonNode = objectMapper.readTree(new File("src/main/resources/raznoe/test_report.json"));
 
-        File file = new File("c:\\1\\test_report.json");
+//        File file = new File("c:\\1\\test_report.json");
+        File file = new File("src/main/resources/raznoe/test_report.json");
 
-        try {
+//        try {
             // Прочитать данные из JSON-файла в список объектов Employee
 //            List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<List<Employee>>() {});
-            SalesAndTrafficByDate employeeList = objectMapper.readValue(file, new TypeReference<>() {});
+//            SalesAndTrafficByDate employeeList = objectMapper.readValue(file, new TypeReference<>() {});
             // Создать один документ, содержащий весь список объектов Employee
             Document document = new Document();
-            document.append("report", employeeList);
+            document.append("report55", jsonNode);
 
             // Записать этот документ в коллекцию MongoDB
             collection.insertOne(document);
 
             System.out.println("Данные успешно записаны в MongoDB.");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

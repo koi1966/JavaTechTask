@@ -56,6 +56,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
                 .register(TrafficByDate.class)
                 .register(SalesAndTrafficByAsin.class)
                 .register(SalesByAsin.class)
+                .register(Community.class)
                 .build();
 
 

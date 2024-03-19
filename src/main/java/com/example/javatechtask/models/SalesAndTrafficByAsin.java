@@ -11,8 +11,8 @@ import java.util.UUID;
 @Getter
 @Document
 public class SalesAndTrafficByAsin {
-    @Id
-    private UUID id;
+//    @Id
+//    private UUID id;
     private String parentAsin;
     private SalesByAsin salesByAsin;
     private TrafficByAsin trafficByAsin;

@@ -1,5 +1,6 @@
 package com.example.javatechtask.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @Document
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReportSpecification {
 //    @Id
 //    private UUID id;
