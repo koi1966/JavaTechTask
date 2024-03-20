@@ -1,65 +1,36 @@
 package com.example.javatechtask.Servise;
 
-import com.example.javatechtask.models.*;
-import com.example.javatechtask.models.repository.EmployeeRepository;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.example.javatechtask.models.SalesAndTrafficReport;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mongodb.client.MongoCollection;
-import org.bson.Document;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
-
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class WriteFileJson {
-    public static User user;
-    public static Employee employee;
     private final MongoTemplate mongoTemplate;
-    private final SalesAndTrafficReport salesAndTrafficReport;
+
 
     public WriteFileJson(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public void WriteFileJsonPars() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();//.findAndRegisterModules();
-
-
-//        MongoCollection<Document> collection = mongoTemplate.getCollection("report11");
-        MongoCollection<Document> collection = mongoTemplate.createCollection(ReportSpecification.class);
-//        MongoCollection<Document> collection = mongoTemplate.getCollection("report11");
+    public SalesAndTrafficReport WriteFileJsonPars() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
 
         //Step 2: Add Jackson Dependency
 // https://www.geeksforgeeks.org/how-to-read-and-write-json-files-in-java/?ref=ml_lbp
-        JsonNode jsonNode = objectMapper.readTree(new File("src/main/resources/raznoe/test_report.json"));
-
-//        File file = new File("c:\\1\\test_report.json");
-        File file = new File("src/main/resources/raznoe/test_report.json");
-
-//        try {
-        // Прочитать данные из JSON-файла в список объектов Employee
-//            List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<List<Employee>>() {});
-//            SalesAndTrafficByDate employeeList = objectMapper.readValue(file, new TypeReference<>() {});
-        // Создать один документ, содержащий весь список объектов Employee
-//        Document document = new Document();
-        Document.parse(jsonNode,)
-//            document.append("report55", jsonNode);
-        document.parse
-
+        SalesAndTrafficReport report = objectMapper.readValue(new File("src/main/resources/raznoe/test_report.json"),
+                SalesAndTrafficReport.class);
+//
         // Записать этот документ в коллекцию MongoDB
-        collection.insertOne(document);
-
-        System.out.println("Данные успешно записаны в MongoDB.");
-
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        return mongoTemplate.insert(report);
     }
 }
-
 
 //        File file = new File("c:\\1\\employee2.json");
 //                employee = objectMapper.readValue(file, Employee.class);

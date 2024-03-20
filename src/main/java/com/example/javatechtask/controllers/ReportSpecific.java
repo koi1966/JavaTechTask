@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReportSpecific {
 //    private final SalesAndTrafficByDateRepo salesAndTrafficByDateRepo;
 
-    @GetMapping("/date")
-    public ResponseEntity<SalesAndTrafficByDate> getReportByDate(@RequestParam String date) {
-
-        SalesAndTrafficByDate reports = null;// reportRepo.findBySalesandtrafficbydate(date);
-
-        if (reports == null) {
-            return ResponseEntity
-                    .status(HttpStatusCode.valueOf(404))
-                    .build();
-        }
-        return new ResponseEntity<>(reports, HttpStatusCode.valueOf(200));
+//    @GetMapping("/date")
+//    public ResponseEntity<SalesAndTrafficByDate> getReportByDate(@RequestParam String date) {
+//
+//        SalesAndTrafficByDate reports = null;// reportRepo.findBySalesandtrafficbydate(date);
+//
+//        if (reports == null) {
+//            return ResponseEntity
+//                    .status(HttpStatusCode.valueOf(404))
+//                    .build();
+//        }
+//        return new ResponseEntity<>(reports, HttpStatusCode.valueOf(200));
 
     }
-}
