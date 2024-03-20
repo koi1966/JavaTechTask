@@ -1,41 +1,32 @@
 package com.example.javatechtask.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Setter
-@Getter
-@Document
-class TrafficByAsin {
-
-    private int browserSessions;
-    private int browserSessionsB2B;
-    private int mobileAppSessions;
-    private int mobileAppSessionsB2B;
-    private int sessions;
-    private int sessionsB2B;
-    private Double browserSessionPercentage;
-    private int browserSessionPercentageB2B;
-    private Double mobileAppSessionPercentage;
-    private int mobileAppSessionPercentageB2B;
-    private Double sessionPercentage;
-    private int sessionPercentageB2B;
-    private int browserPageViews;
-    private int browserPageViewsB2B;
-    private int mobileAppPageViews;
-    private int mobileAppPageViewsB2B;
-    private int pageViews;
-    private int pageViewsB2B;
-    private Double browserPageViewsPercentage;
-    private int browserPageViewsPercentageB2B;
-    private Double mobileAppPageViewsPercentage;
-    private int mobileAppPageViewsPercentageB2B;
-    private Double pageViewsPercentage;
-    private int pageViewsPercentageB2B;
-    private int buyBoxPercentage;
-    private int buyBoxPercentageB2B;
-    private Double unitSessionPercentage;
-    private int unitSessionPercentageB2B;
-
+public class TrafficByAsin {
+    public int browserSessions;
+    public int browserSessionsB2B;
+    public int mobileAppSessions;
+    public int mobileAppSessionsB2B;
+    public int sessions;
+    public int sessionsB2B;
+    public double browserSessionPercentage;
+    public double browserSessionPercentageB2B;
+    public double mobileAppSessionPercentage;
+    public double mobileAppSessionPercentageB2B;
+    public double sessionPercentage;
+    public double sessionPercentageB2B;
+    public int browserPageViews;
+    public int browserPageViewsB2B;
+    public int mobileAppPageViews;
+    public int mobileAppPageViewsB2B;
+    public int pageViews;
+    public int pageViewsB2B;
+    public double browserPageViewsPercentage;
+    public double browserPageViewsPercentageB2B;
+    public double mobileAppPageViewsPercentage;
+    public double mobileAppPageViewsPercentageB2B;
+    public double pageViewsPercentage;
+    public double pageViewsPercentageB2B;
+    public double buyBoxPercentage;
+    public double buyBoxPercentageB2B;
+    public double unitSessionPercentage;
+    public double unitSessionPercentageB2B;
 }

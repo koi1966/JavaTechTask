@@ -1,15 +1,6 @@
 package com.example.javatechtask.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Setter
-@Getter
-@Document
 public class ReportOptions {
-
-    private String dateGranularity;
-    private String asinGranularity;
-
+    public String dateGranularity;
+    public String asinGranularity;
 }

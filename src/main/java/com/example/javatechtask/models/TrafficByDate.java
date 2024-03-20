@@ -1,35 +1,27 @@
 package com.example.javatechtask.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Setter
-@Getter
-@Document
-public class TrafficByDate {
-    private int browserPageViews;
-    private int browserPageViewsB2B;
-    private int mobileAppPageViews;
-    private int mobileAppPageViewsB2B;
-    private int pageViews;
-    private int pageViewsB2B;
-    private int browserSessions;
-    private int browserSessionsB2B;
-    private int mobileAppSessions;
-    private int mobileAppSessionsB2B;
-    private int sessions;
-    private int sessionsB2B;
-    private double buyBoxPercentage;
-    private double buyBoxPercentageB2B;
-    private double orderItemSessionPercentage;
-    private double orderItemSessionPercentageB2B;
-    private double unitSessionPercentage;
-    private double unitSessionPercentageB2B;
-    private int averageOfferCount;
-    private int averageParentItems;
-    private int feedbackReceived;
-    private int negativeFeedbackReceived;
-    private double receivedNegativeFeedbackRate;
-
+public class TrafficByDate{
+    public int browserPageViews;
+    public int browserPageViewsB2B;
+    public int mobileAppPageViews;
+    public int mobileAppPageViewsB2B;
+    public int pageViews;
+    public int pageViewsB2B;
+    public int browserSessions;
+    public int browserSessionsB2B;
+    public int mobileAppSessions;
+    public int mobileAppSessionsB2B;
+    public int sessions;
+    public int sessionsB2B;
+    public double buyBoxPercentage;
+    public double buyBoxPercentageB2B;
+    public double orderItemSessionPercentage;
+    public double orderItemSessionPercentageB2B;
+    public double unitSessionPercentage;
+    public double unitSessionPercentageB2B;
+    public int averageOfferCount;
+    public int averageParentItems;
+    public int feedbackReceived;
+    public int negativeFeedbackReceived;
+    public int receivedNegativeFeedbackRate;
 }

@@ -2,34 +2,28 @@ package com.example.javatechtask.Servise;
 
 import com.example.javatechtask.models.*;
 import com.example.javatechtask.models.repository.EmployeeRepository;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mongodb.MongoClient;
-import com.mongodb.client.ClientSession;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
-import org.bson.codecs.configuration.CodecRegistries;
-import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 @Component
 public class WriteFileJson {
     public static User user;
     public static Employee employee;
     private final MongoTemplate mongoTemplate;
-    private final EmployeeRepository employeeRepository;
+    private final SalesAndTrafficReport salesAndTrafficReport;
 
-    public WriteFileJson(MongoTemplate mongoTemplate, EmployeeRepository employeeRepository) {
+    public WriteFileJson(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
-        this.employeeRepository = employeeRepository;
     }
+
     public void WriteFileJsonPars() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();//.findAndRegisterModules();
 
@@ -46,17 +40,19 @@ public class WriteFileJson {
         File file = new File("src/main/resources/raznoe/test_report.json");
 
 //        try {
-            // Прочитать данные из JSON-файла в список объектов Employee
+        // Прочитать данные из JSON-файла в список объектов Employee
 //            List<Employee> employeeList = objectMapper.readValue(file, new TypeReference<List<Employee>>() {});
 //            SalesAndTrafficByDate employeeList = objectMapper.readValue(file, new TypeReference<>() {});
-            // Создать один документ, содержащий весь список объектов Employee
-            Document document = new Document();
-            document.append("report55", jsonNode);
+        // Создать один документ, содержащий весь список объектов Employee
+//        Document document = new Document();
+        Document.parse(jsonNode,)
+//            document.append("report55", jsonNode);
+        document.parse
 
-            // Записать этот документ в коллекцию MongoDB
-            collection.insertOne(document);
+        // Записать этот документ в коллекцию MongoDB
+        collection.insertOne(document);
 
-            System.out.println("Данные успешно записаны в MongoDB.");
+        System.out.println("Данные успешно записаны в MongoDB.");
 
 //        } catch (IOException e) {
 //            e.printStackTrace();

@@ -1,6 +1,6 @@
 package com.example.javatechtask.bd;
 
-import com.example.javatechtask.models.*;
+import com.example.javatechtask.models.arshiv.*;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
