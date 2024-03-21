@@ -1,6 +1,7 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.Servise.WriteFileJson;
+import com.example.javatechtask.models.SalesAndTrafficReport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

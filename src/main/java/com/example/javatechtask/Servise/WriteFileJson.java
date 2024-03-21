@@ -44,8 +44,9 @@ public class WriteFileJson {
         MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
 
         Bson filter = Filters.eq("salesAndTrafficByDate.date","2024-02-15");
+//        collection.find(filter).forEach(Document::toJson);
 
-        return collection.find(filter).explain().toJson();
+        return collection.find(filter).forEach(document -> );
     }
 }
 
