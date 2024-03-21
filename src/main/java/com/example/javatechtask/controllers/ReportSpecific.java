@@ -1,9 +1,9 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.Servise.WriteFileJson;
-import com.example.javatechtask.models.SalesAndTrafficReport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -15,8 +15,16 @@ public class ReportSpecific {
     private final WriteFileJson writeFileJson;
 
     @GetMapping
-    public String getReportByDate() {
-        log.info("Search all by date ");
-        return writeFileJson.FileFromData();
+    public ResponseEntity<String> getReportByDate(@RequestParam("date") String date) {
+        log.info("Search by this date - ", date);
+        return writeFileJson.FileFromData(date);
+    }
+
+    @GetMapping("/between")
+    public ResponseEntity<String> filterBetweenData(@RequestParam("firstDate") String firstDate,
+                                                    @RequestParam("endDate") String endDate) {
+        log.info("Search by between date - %s, %s", firstDate, endDate);
+
+        return writeFileJson.filterBetweenData(firstDate, endDate);
     }
 }
