@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserRepo userRepo;
-//    private User user;
 
     @GetMapping("/all")
     public List<User> getAllUsersFromDB(){
@@ -42,9 +40,5 @@ public class UserController {
 
         return userRepo.save(user);
     }
-
-
-
-
 
 }
