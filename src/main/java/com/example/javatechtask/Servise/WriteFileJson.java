@@ -66,61 +66,62 @@ public class WriteFileJson {
     }
 
     public ResponseEntity<String> filterBetweenDates(String firstDate, String endDate) {
-        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
+//        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
+//
+//        // Создаем фильтр для выбора элементов массива с датами в заданном диапазоне
+//        Bson arrayFilter = Filters.and(
+//                Filters.gte("salesAndTrafficByDate.date", firstDate), // Больше или равно первой дате
+//                Filters.lt("salesAndTrafficByDate.date", endDate)    // Меньше второй даты
+//        );
+//
+//        Bson projection = Projections.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
+//
+//        // Применяем фильтр к коллекции
+//        MongoCursor<Document> cursor = collection.find(arrayFilter).iterator();
+//
+//        StringBuilder stringBuilder = new StringBuilder();
+//        try {
+//            cursor.forEachRemaining(doc -> stringBuilder.append(doc.toJson()).append("\n"));
+//        } finally {
+//            cursor.close();
+//        }
+//        return ResponseEntity.ok(stringBuilder.toString());
+        return null;
+   }
 
-        // Создаем фильтр для выбора элементов массива с датами в заданном диапазоне
-        Bson arrayFilter = Filters.and(
-                Filters.gte("salesAndTrafficByDate.date", firstDate), // Больше или равно первой дате
-                Filters.lt("salesAndTrafficByDate.date", endDate)    // Меньше второй даты
-        );
-
-        Bson projection = Projections.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
-
-        // Применяем фильтр к коллекции
-        MongoCursor<Document> cursor = collection.find(arrayFilter).iterator();
-
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            cursor.forEachRemaining(doc -> stringBuilder.append(doc.toJson()).append("\n"));
-        } finally {
-            cursor.close();
-        }
-        return ResponseEntity.ok(stringBuilder.toString());
-    }
-
-    public ResponseEntity<String> calculateSumBetweenData(String firstDate, String endDate) {
-        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
-
-        Bson filter = Filters.and(
-                Filters.gte("salesAndTrafficByDate.date", firstDate), // Больше или равно указанной даты
-                Filters.lt("salesAndTrafficByDate.date", endDate)    // Меньше указанной даты
-        );
-
-        MongoCursor<Document> cursor = collection.find(filter).iterator();
-
-        double totalAmount = 0; // Переменная для хранения суммы
-
-        try {
-            while (cursor.hasNext()) {
-                Document doc = cursor.next();
-                totalAmount += extractAmountFromDocument(doc); // Извлекаем сумму из документа и добавляем к общей сумме
-            }
-        } finally {
-            cursor.close();
-        }
-
-        // Формируем ответ
-        String response = "Total amount between " + firstDate + " and " + endDate + ": " + totalAmount;
-
-        return ResponseEntity.ok(response);
-    }
+//    public ResponseEntity<String> calculateSumBetweenData(String firstDate, String endDate) {
+//        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
+//
+//        Bson filter = Filters.and(
+//                Filters.gte("salesAndTrafficByDate.date", firstDate), // Больше или равно указанной даты
+//                Filters.lt("salesAndTrafficByDate.date", endDate)    // Меньше указанной даты
+//        );
+//
+//        MongoCursor<Document> cursor = collection.find(filter).iterator();
+//
+//        double totalAmount = 0; // Переменная для хранения суммы
+//
+//        try {
+//            while (cursor.hasNext()) {
+//                Document doc = cursor.next();
+//                totalAmount += extractAmountFromDocument(doc); // Извлекаем сумму из документа и добавляем к общей сумме
+//            }
+//        } finally {
+//            cursor.close();
+//        }
+//
+//        // Формируем ответ
+//        String response = "Total amount between " + firstDate + " and " + endDate + ": " + totalAmount;
+//
+//        return ResponseEntity.ok(response);
+//    }
 
     // Метод для извлечения суммы из документа
-    private double extractAmountFromDocument(Document doc) {
-        Document salesByDate = (Document) doc.get("salesAndTrafficByDate");
-        Document sales = (Document) salesByDate.get("orderedProductSales"); // Предполагаем, что сумма продаж находится внутри этого объекта
-        return sales.getDouble("amount");
-    }
+//    private double extractAmountFromDocument(Document doc) {
+//        Document salesByDate = (Document) doc.get("salesAndTrafficByDate");
+//        Document sales = (Document) salesByDate.get("orderedProductSales"); // Предполагаем, что сумма продаж находится внутри этого объекта
+//        return sales.getDouble("amount");
+//    }
 
 }
 

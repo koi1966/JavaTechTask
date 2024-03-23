@@ -1,7 +1,7 @@
 package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.models.User;
-import com.example.javatechtask.models.repository.UserRepo;
+import com.example.javatechtask.models.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserRepo userRepo;
+    private final UserRepository userRepo;
 
     @GetMapping("/all")
     public List<User> getAllUsersFromDB(){
