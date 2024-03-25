@@ -2,7 +2,6 @@ package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,19 +11,22 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/user")
-@RequiredArgsConstructor
 public class UserController {
     private final UserRepository userRepo;
 
+    public UserController(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+
     @GetMapping("/all")
-    public List<User> getAllUsersFromDB(){
+    public List<User> getAllUsersFromDB() {
         return userRepo.findAll();
     }
 
     @GetMapping
-    public ResponseEntity<User> getUserByName(@RequestParam String name){
+    public ResponseEntity<User> getUserByName(@RequestParam String name) {
 
-        var user =userRepo.findByName(name);
+        var user = userRepo.findByName(name);
         if (user == null) {
             return ResponseEntity
                     .status(HttpStatusCode.valueOf(404))
@@ -34,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping
-    public User putUserIntoDB(@RequestBody User user){
+    public User putUserIntoDB(@RequestBody User user) {
 
         user.setId(UUID.randomUUID());
 

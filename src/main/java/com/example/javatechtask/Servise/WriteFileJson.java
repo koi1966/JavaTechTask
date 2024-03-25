@@ -1,5 +1,7 @@
 package com.example.javatechtask.Servise;
 
+import com.example.javatechtask.models.SalesAndTrafficByAsin;
+import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.example.javatechtask.models.SalesAndTrafficReport;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.MongoCollection;
@@ -30,11 +32,29 @@ public class WriteFileJson {
 
         //Step 2: Add Jackson Dependency
 // https://www.geeksforgeeks.org/how-to-read-and-write-json-files-in-java/?ref=ml_lbp
-        log.info("->Reading data from a file..");
+        log.info("Reading data from a file..");
         SalesAndTrafficReport report = objectMapper.readValue(new File("src/main/resources/raznoe/test_report.json")
-                ,SalesAndTrafficReport.class);
+                , SalesAndTrafficReport.class);
 //
+        log.info("Write to the database from a file in SalesAndTrafficReport.class successfully.");
+
+        int countTrafficyDate =0;
+        int countTrafficByAsin =0;
+        mongoTemplate.insert(report.getReportSpecification());
         log.info("->Write to the database from the file was saved successfully.");
+        for (SalesAndTrafficByDate salesAndTrafficByDate : report.getSalesAndTrafficByDate()) {
+            mongoTemplate.insert(salesAndTrafficByDate);
+            countTrafficyDate ++;
+        }log.info("->Write SalesAndTrafficByDate to the database from the file was saved successfully. Array "
+                + countTrafficyDate);
+
+        for (SalesAndTrafficByAsin salesAndTrafficByAsin : report.getSalesAndTrafficByAsin()) {
+            mongoTemplate.insert(salesAndTrafficByAsin);
+            countTrafficByAsin ++;
+
+        }log.info("->Write to SalesAndTrafficByAsin the database from the file was saved successfully. Array "
+                + countTrafficByAsin);
+
         return mongoTemplate.insert(report);
     }
 
@@ -87,7 +107,7 @@ public class WriteFileJson {
 //        }
 //        return ResponseEntity.ok(stringBuilder.toString());
         return null;
-   }
+    }
 
 //    public ResponseEntity<String> calculateSumBetweenData(String firstDate, String endDate) {
 //        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
@@ -124,23 +144,6 @@ public class WriteFileJson {
 //    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //        File file = new File("c:\\1\\employee2.json");
