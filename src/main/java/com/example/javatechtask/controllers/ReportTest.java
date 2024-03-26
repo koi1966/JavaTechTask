@@ -15,7 +15,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/r")
+@RequestMapping("/report")
 public class ReportTest {
 
     private final TrafficByDateRepository trafficByDateRepository;
@@ -26,12 +26,26 @@ public class ReportTest {
         this.writeFileJson = writeFileJson;
     }
 
+
     @GetMapping
-    public List<SalesAndTrafficByDate> getReportTest(@RequestParam("dateF") String dateF,@RequestParam("dateN") String dateN) {
-        log.info("Search by this date - " + dateF + " " + dateN);
+    public List<SalesAndTrafficByDate> getReportTest(@RequestParam("date") String date) {
+        log.info("Search by this date - " + date );
         List<SalesAndTrafficByDate> report = trafficByDateRepository.
-        findSalesAndTrafficByDateBetween(dateF,dateN);
+                findSalesAndTrafficByDate(date);
         return report;
     }
+
+    @GetMapping("/between")
+    public List<SalesAndTrafficByDate> getReportBetween(@RequestParam("startDate") String startDate,
+                                                        @RequestParam("endDate") String endDate) {
+
+        log.info("Search by this date - " + startDate + " " + endDate);
+
+        List<SalesAndTrafficByDate> result = trafficByDateRepository.findByDateRange(startDate, endDate);
+
+        return result;
+    }
+
+
 
 }
