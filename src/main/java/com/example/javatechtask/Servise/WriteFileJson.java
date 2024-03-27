@@ -35,7 +35,7 @@ public class WriteFileJson {
         log.info("Reading data from a file..");
         SalesAndTrafficReport report = objectMapper.readValue(new File("src/main/resources/raznoe/test_report.json")
                 , SalesAndTrafficReport.class);
-//
+
         log.info("Write to the database from a file in SalesAndTrafficReport.class successfully.");
 
         int countTrafficyDate =0;
@@ -60,7 +60,6 @@ public class WriteFileJson {
 
     public ResponseEntity<String> FileFromData(String date) {
         MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
-//        Bson filter = Filters.eq("salesAndTrafficByDate.date", date);
 
         // Создаем фильтр для поиска элементов массива, которые содержат только заданную дату
         Bson arrayFilter = Filters.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
@@ -85,33 +84,7 @@ public class WriteFileJson {
         return ResponseEntity.ok(stringBuilder.toString());
     }
 
-    public ResponseEntity<String> filterBetweenDates(String firstDate, String endDate) {
-//        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
-//
-//        // Создаем фильтр для выбора элементов массива с датами в заданном диапазоне
-//        Bson arrayFilter = Filters.and(
-//                Filters.gte("salesAndTrafficByDate.date", firstDate), // Больше или равно первой дате
-//                Filters.lt("salesAndTrafficByDate.date", endDate)    // Меньше второй даты
-//        );
-//
-//        Bson projection = Projections.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
-//
-//        // Применяем фильтр к коллекции
-//        MongoCursor<Document> cursor = collection.find(arrayFilter).iterator();
-//
-//        StringBuilder stringBuilder = new StringBuilder();
-//        try {
-//            cursor.forEachRemaining(doc -> stringBuilder.append(doc.toJson()).append("\n"));
-//        } finally {
-//            cursor.close();
-//        }
-//        return ResponseEntity.ok(stringBuilder.toString());
-        return null;
-    }
-
-
 }
-
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 //Конечно, давайте создадим полный пример, который выполняет поиск объектов в MongoDB по заданному диапазону дат и затем суммирует значения различных полей из этих объектов. В этом примере я предполагаю, что у вас есть класс `YourEntity`, который представляет собой объекты, сохраняемые в MongoDB. Вам также нужен репозиторий `YourRepository` для выполнения запросов к базе данных.

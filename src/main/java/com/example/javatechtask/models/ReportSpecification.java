@@ -1,7 +1,11 @@
 package com.example.javatechtask.models;
 
-import java.util.ArrayList;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+@Setter
+@Getter
 public class ReportSpecification {
     public String reportType;
     public ReportOptions reportOptions;

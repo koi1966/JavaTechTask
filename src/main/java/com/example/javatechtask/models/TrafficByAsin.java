@@ -1,5 +1,10 @@
 package com.example.javatechtask.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class TrafficByAsin {
     public int browserSessions;
     public int browserSessionsB2B;
