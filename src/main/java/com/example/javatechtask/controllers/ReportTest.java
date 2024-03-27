@@ -19,20 +19,16 @@ import java.util.List;
 public class ReportTest {
 
     private final TrafficByDateRepository trafficByDateRepository;
-    private final WriteFileJson writeFileJson;
 
-    public ReportTest(TrafficByDateRepository trafficByDateRepository, WriteFileJson writeFileJson) {
+    public ReportTest(TrafficByDateRepository trafficByDateRepository) {
         this.trafficByDateRepository = trafficByDateRepository;
-        this.writeFileJson = writeFileJson;
     }
-
 
     @GetMapping
     public List<SalesAndTrafficByDate> getReportTest(@RequestParam("date") String date) {
         log.info("Search by this date - " + date );
-        List<SalesAndTrafficByDate> report = trafficByDateRepository.
-                findSalesAndTrafficByDate(date);
-        return report;
+//        return trafficByDateRepository.findByOneDate(date);
+        return trafficByDateRepository.findByDate(date);
     }
 
     @GetMapping("/between")
@@ -45,7 +41,5 @@ public class ReportTest {
 
         return result;
     }
-
-
 
 }

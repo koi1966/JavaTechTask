@@ -10,8 +10,8 @@ import java.util.List;
 
 @EnableMongoRepositories
 public interface TrafficByDateRepository extends MongoRepository<SalesAndTrafficByDate, String> {
-    @Query("{ 'salesAndTrafficByDate.date' : ?0 }")
-    List<SalesAndTrafficByDate> findSalesAndTrafficByDate(String date);
+//    @Query("{ 'date' : ?0 }")
+    List<SalesAndTrafficByDate> findByDate(String date);
 
     @Query("{ 'date' : { $gt: ?0, $lt: ?1 } }")
     List<SalesAndTrafficByDate> findByDateRange(String startDate, String endDate);
