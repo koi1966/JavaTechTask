@@ -20,17 +20,4 @@ public class ReportSpecific {
         return writeFileJson.FileFromData(date);
     }
 
-    @GetMapping("/between")
-    public ResponseEntity<String> filterBetweenData(@RequestParam("firstDate") String firstDate,
-                                                    @RequestParam("endDate") String endDate) {
-        log.info("Search by between date - firstDate - " + firstDate +", endDate - "+ endDate);
-
-//        return writeFileJson.calculateSumBetweenData(firstDate, endDate);
-        return writeFileJson.filterBetweenDates(firstDate, endDate);
-    }
-
-
-
-
-
 }

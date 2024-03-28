@@ -1,8 +1,9 @@
 package com.example.javatechtask.controllers;
 
 
-import com.example.javatechtask.Servise.WriteFileJson;
 //import com.example.javatechtask.models.repository.ReportRepository;
+
+import com.example.javatechtask.Servise.SumFromDate;
 import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -15,31 +16,43 @@ import java.util.List;
 
 @Slf4j
 @RestController
+//@RequiredArgsConstructor
 @RequestMapping("/report")
-public class ReportTest {
+public class Report {
 
     private final TrafficByDateRepository trafficByDateRepository;
+    private final SumFromDate sumFromDate;
 
-    public ReportTest(TrafficByDateRepository trafficByDateRepository) {
+    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate) {
         this.trafficByDateRepository = trafficByDateRepository;
+        this.sumFromDate = sumFromDate;
     }
 
     @GetMapping
-    public List<SalesAndTrafficByDate> getReportTest(@RequestParam("date") String date) {
-        log.info("Search by this date - " + date );
-//        return trafficByDateRepository.findByOneDate(date);
+    public List<SalesAndTrafficByDate> getReportOneDay(@RequestParam("date") String date) {
+        log.info("Search by this date - " + date);
+
         return trafficByDateRepository.findByDate(date);
     }
 
     @GetMapping("/between")
-    public List<SalesAndTrafficByDate> getReportBetween(@RequestParam("startDate") String startDate,
-                                                        @RequestParam("endDate") String endDate) {
+    public List<SalesAndTrafficByDate> getReportBetweenDay(@RequestParam("startDate") String startDate,
+                                                           @RequestParam("endDate") String endDate) {
 
         log.info("Search by this date - " + startDate + " " + endDate);
 
         List<SalesAndTrafficByDate> result = trafficByDateRepository.findByDateRange(startDate, endDate);
 
         return result;
+    }
+
+    @GetMapping("/sum")
+    public List<SalesAndTrafficByDate> getReportBetweenDaySum(@RequestParam("startDate") String startDate,
+                                                              @RequestParam("endDate") String endDate) {
+
+        log.info("Search by this date and sum - " + startDate + " " + endDate);
+
+        return sumFromDate.processDateRange(startDate, endDate);
     }
 
 }

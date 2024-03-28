@@ -15,19 +15,10 @@ public class FileToMongoDB {
 
     private final JsonToMongoDB jsonToMongoDB;
 
-
-    @GetMapping("/add")
+    @GetMapping("/find")
     public String addJsonToMongoDB() {
-//        jsonToMongoDB.JsMoDBTest();
+
         return "Add See html test 77777 !!! " + jsonToMongoDB.JsToMoDB();
-    }
-
-    @PostMapping
-    public User addJsonFileToMongoDB(){
-
-//        user.setId(UUID.randomUUID());
-
-        return jsonToMongoDB.addFile();
     }
 
     @GetMapping("/p")

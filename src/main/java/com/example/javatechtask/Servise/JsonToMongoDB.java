@@ -16,12 +16,6 @@ public class JsonToMongoDB {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public User addFile() {
-
-
-        return null;
-    }
-
     public String JsToMoDB() {
         mongoTemplate.getDb();
         boolean aga = mongoTemplate.collectionExists("report");
