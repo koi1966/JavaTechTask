@@ -10,8 +10,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Document
 @EnableMongoRepositories
 public class SalesAndTrafficByDate {
-    public String date;
-    public SalesByDate salesByDate;
-    public TrafficByDate trafficByDate;
+    private String date;
+    private SalesByDate salesByDate;
+    private TrafficByDate trafficByDate;
 
 }

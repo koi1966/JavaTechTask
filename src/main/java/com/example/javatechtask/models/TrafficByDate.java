@@ -8,19 +8,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 
 public class TrafficByDate{
-    public int browserPageViews;
-    public int browserPageViewsB2B;
-    public int mobileAppPageViews;
-    public int mobileAppPageViewsB2B;
-    public int pageViews;
-    public int pageViewsB2B;
-    public int browserSessions;
-    public int browserSessionsB2B;
-    public int mobileAppSessions;
-    public int mobileAppSessionsB2B;
-    public int sessions;
-    public int sessionsB2B;
-    public double buyBoxPercentage;
+    private int browserPageViews;
+    private int browserPageViewsB2B;
+    private int mobileAppPageViews;
+    private int mobileAppPageViewsB2B;
+    private int pageViews;
+    private int pageViewsB2B;
+    private int browserSessions;
+    private int browserSessionsB2B;
+    private int mobileAppSessions;
+    private int mobileAppSessionsB2B;
+    private int sessions;
+    private int sessionsB2B;
+    private double buyBoxPercentage;
     public double buyBoxPercentageB2B;
     public double orderItemSessionPercentage;
     public double orderItemSessionPercentageB2B;

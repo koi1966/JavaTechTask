@@ -47,7 +47,7 @@ public class Report {
     }
 
     @GetMapping("/sum")
-    public List<SalesAndTrafficByDate> getReportBetweenDaySum(@RequestParam("startDate") String startDate,
+    public SalesAndTrafficByDate getReportBetweenDaySum(@RequestParam("startDate") String startDate,
                                                               @RequestParam("endDate") String endDate) {
 
         log.info("Search by this date and sum - " + startDate + " " + endDate);

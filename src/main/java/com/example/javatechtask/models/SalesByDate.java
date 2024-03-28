@@ -2,19 +2,18 @@ package com.example.javatechtask.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter
 
 public class SalesByDate {
-    public OrderedProductSales orderedProductSales;
-    public OrderedProductSalesB2B orderedProductSalesB2B;
-    public int unitsOrdered;
-    public int unitsOrderedB2B;
-    public int totalOrderItems;
-    public int totalOrderItemsB2B;
-    public AverageSalesPerOrderItem averageSalesPerOrderItem;
+    private OrderedProductSales orderedProductSales;
+    private OrderedProductSalesB2B orderedProductSalesB2B;
+    private int unitsOrdered;
+    private int unitsOrderedB2B;
+    private int totalOrderItems;
+    private int totalOrderItemsB2B;
+    private AverageSalesPerOrderItem averageSalesPerOrderItem;
     public AverageSalesPerOrderItemB2B averageSalesPerOrderItemB2B;
     public double averageUnitsPerOrderItem;
     public double averageUnitsPerOrderItemB2B;

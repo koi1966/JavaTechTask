@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter
+@Document
 public class OrderedProductSales {
-    public double amount;
-    public String currencyCode;
-
+    private double amount;
+    private String currencyCode;
 }
