@@ -21,10 +21,13 @@ public interface TrafficByDateRepository extends MongoRepository<SalesAndTraffic
 
 //    https://www.baeldung.com/queries-in-spring-data-mongodb
 
-    @Aggregation(pipeline = {
-            "{ $group: { _id: \"$date\", totalSales: { $sum: \"$salesByDate.unitsOrdered\" }, totalTraffic: { $sum: \"$trafficByDate.visitors\" } } }"
-    })
-    List<Object> aggregateSalesAndTraffic();
+
+    @Query("{ 'date': { $gt: ?0, $lt: ?1 }, " +
+            "'totalUnitsOrdered': { $sum: '$salesByDate.unitsOrdered' }, " +
+            "'totalAmountOrdered': { $sum: '$salesByDate.orderedProductSales.amount' } }")
+    SalesAndTrafficByDate findByDateRangeAndCalculateTotal(String startDate, String endDate);
+
+
 
 }
 
