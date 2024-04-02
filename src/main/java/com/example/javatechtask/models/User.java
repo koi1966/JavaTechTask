@@ -5,22 +5,26 @@ import lombok.Setter;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.UUID;
 
 @Setter
 @Getter
-@Document
+@Document(collection = "users")
 public class User {
 
     @Id
     private UUID id;
     @Indexed(unique = true)
-    private String name;
+    private String username;
     private String password;
+    @Indexed(unique = true)
     private String email;
-    private String roles;
+    @DBRef(lazy = true)
+    private List<Role> roles;
     private boolean valid;
 
 }

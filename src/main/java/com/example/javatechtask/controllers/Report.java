@@ -7,6 +7,7 @@ import com.example.javatechtask.Servise.AggregationService;
 import com.example.javatechtask.Servise.SumFromDate;
 import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
+import com.example.javatechtask.models.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +25,14 @@ public class Report {
     private final TrafficByDateRepository trafficByDateRepository;
     private final SumFromDate sumFromDate;
     private final AggregationService aggregationService;
+    private final UserRepository userRepository;
 
-    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService) {
+
+    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService, UserRepository userRepository) {
         this.trafficByDateRepository = trafficByDateRepository;
         this.sumFromDate = sumFromDate;
         this.aggregationService = aggregationService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping
