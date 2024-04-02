@@ -27,6 +27,8 @@ public class Report {
     private final AggregationService aggregationService;
     private final UserRepository userRepository;
 
+//    GET-запросы обычно используются для запросов данных,
+//    а POST-запросы - для отправки данных на сервер для обработки.
 
     public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService, UserRepository userRepository) {
         this.trafficByDateRepository = trafficByDateRepository;
