@@ -8,11 +8,11 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
-@Document
+//@Getter
+//@Setter
+//@ToString
+//@RequiredArgsConstructor
+//@Document
 //@Table(name = "api_keys")
 public class ApiKeyEntity {
     @Id
@@ -21,7 +21,7 @@ public class ApiKeyEntity {
 //    @Enumerated(EnumType.STRING)
 //    @Column(columnDefinition = "status_type")
 //    @Type(PostgreSQLEnumType.class)
-    private ClientStatus status;
+//    private ClientStatus status;
 
-    private String client;
+//    private String client;
 }

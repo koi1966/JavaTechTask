@@ -1,4 +1,5 @@
 https://www.youtube.com/watch?v=NIv9TFTSIlg
+https://www.youtube.com/watch?v=U1y8GsJ8CQs
 
 
 http://localhost:8080/user/new-user
@@ -10,6 +11,22 @@ http://localhost:8080/user/new-user
     "valid": "true"
   }
 
+  {
+      "name": "admin",
+      "password": "admin",
+      "email": "oleg@gmail.com",
+      "roles": "ROLE_ADMIN",
+      "valid": "true"
+    }
+
+    {
+          "name": "Oleg",
+          "password": "Oleg",
+          "email": "oleg@gmail.com",
+          "roles": "ROLE_ADMIN, ROLE_USER",
+          "valid": "true"
+        }
+
   http://localhost:8080/report/?date=2024-02-16
 
   http://localhost:8080/report/between?startDate=2024-02-16&endDate=2024-02-20
@@ -18,4 +35,8 @@ http://localhost:8080/user/new-user
 Using MongoDB in a Spring Boot application
   https://mmarcosab.medium.com/using-mongodb-in-a-spring-boot-application-438a9503c9ee
 
+
+«Які є можливості розвитку на цій посаді?»
+
+https://www.work.ua/articles/jobseeker/3268/?utm_source=digest&utm_medium=email&utm_content=article1&utm_campaign=09.04.2024_824&commId=01HV1CY6N6E5BYQ7MWY16CSEA0
 
