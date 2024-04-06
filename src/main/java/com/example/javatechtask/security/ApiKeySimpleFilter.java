@@ -23,14 +23,14 @@ public class ApiKeySimpleFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        final String apiKey = request.getHeader("x-api-key");
+        final String apiKey = request.getHeader("valid-key");
 
-//        if (apiKey == null || apiKey.isBlank()) {
-//            filterChain.doFilter(request, response);
-//            return;
-//        }
+        if (apiKey == null || apiKey.isBlank()) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-        if ("valid-key".equals(apiKey) ) {
+        if ("x-api-key".equals(apiKey) ) {
             log.info("Valid API KEY provided");
             filterChain.doFilter(request, response);
             SecurityContextHolder.getContext().setAuthentication(
