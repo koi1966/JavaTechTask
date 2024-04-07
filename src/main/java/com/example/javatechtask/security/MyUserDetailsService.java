@@ -9,15 +9,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-//@Service
+@Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository; //
+
+    public MyUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = Optional.ofNullable(userRepository.findByName(username));
-        return user.map(MyUserDetails::new )
+
+        Optional<User> user = userRepository.findByName(username);   // тут null
+        return user.map(MyUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException(username  + " not found."));
     }
 }

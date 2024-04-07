@@ -1,5 +1,7 @@
 package com.example.javatechtask.security;
 
+import com.example.javatechtask.models.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -14,15 +16,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-//@Configuration
-//@EnableWebSecurity
-////@RequiredArgsConstructor
-//@EnableMethodSecurity
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+@EnableMethodSecurity
 public class SecurityConfig {
+
+    private final UserRepository userRepository; //
 
     @Bean
     public UserDetailsService userDetailsService(){
-        return new MyUserDetailsService();
+        return new MyUserDetailsService(userRepository);
     }
 
     @Bean
@@ -31,7 +35,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/report","/user/new-user").permitAll()
+                        .requestMatchers("/report","/user/**").permitAll()
                         .requestMatchers("/report/between").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();

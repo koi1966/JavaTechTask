@@ -1,1 +1,21 @@
 https://www.youtube.com/watch?v=NIv9TFTSIlg
+
+
+http://localhost:8080/user/new-user
+{
+    "name": "user",
+    "password": "user",
+    "email": "oleg@gmail.com",
+    "roles": "ROLE_USER",
+    "valid": "true"
+  }
+
+  http://localhost:8080/report/?date=2024-02-16
+
+  http://localhost:8080/report/between?startDate=2024-02-16&endDate=2024-02-20
+
+
+Using MongoDB in a Spring Boot application
+  https://mmarcosab.medium.com/using-mongodb-in-a-spring-boot-application-438a9503c9ee
+
+

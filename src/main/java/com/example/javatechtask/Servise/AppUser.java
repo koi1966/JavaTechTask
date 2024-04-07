@@ -4,7 +4,9 @@ import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -23,5 +25,8 @@ public class AppUser {
         userRepository.save(user);
     }
 
+    public Optional<User> findUser(@RequestParam String username) {
 
+        return userRepository.findByName(username);
+    }
 }
