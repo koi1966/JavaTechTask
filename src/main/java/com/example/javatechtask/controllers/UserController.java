@@ -1,10 +1,12 @@
 package com.example.javatechtask.controllers;
 
+import com.example.javatechtask.Servise.AppUser;
 import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepository;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+//import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,9 +15,11 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController {
     private final UserRepository userRepo;
+    private final AppUser appUser;
 
-    public UserController(UserRepository userRepo) {
+    public UserController(UserRepository userRepo, AppUser appUser) {
         this.userRepo = userRepo;
+        this.appUser = appUser;
     }
 
     @GetMapping("/all")
@@ -35,12 +39,15 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatusCode.valueOf(200));
     }
 
-    @PostMapping
-    public User putUserIntoDB(@RequestBody User user) {
+    @PostMapping("/new-user")
+//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
+    public String addNewUserIntoDB(@RequestBody User user) {
 
         user.setId(UUID.randomUUID());
-
-        return userRepo.save(user);
+//        userRepo.save(user);
+        appUser.addUser(user);
+        return "New user is saved.";
     }
 
 }

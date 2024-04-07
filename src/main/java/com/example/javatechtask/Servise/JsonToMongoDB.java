@@ -1,6 +1,5 @@
 package com.example.javatechtask.Servise;
 
-import com.example.javatechtask.models.User;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;

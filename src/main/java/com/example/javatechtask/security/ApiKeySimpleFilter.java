@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Slf4j
-@Component
+//@Component
 public class ApiKeySimpleFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request,
