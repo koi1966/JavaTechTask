@@ -1,4 +1,4 @@
-package com.example.javatechtask.Servise;
+package com.example.javatechtask.Servise.arshiv;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;

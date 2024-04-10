@@ -19,7 +19,7 @@ public class AppUser {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void addUser(User user){
+    public void addUser(User user) {
         user.setId(UUID.randomUUID());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

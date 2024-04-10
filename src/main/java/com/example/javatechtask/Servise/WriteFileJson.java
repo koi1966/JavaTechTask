@@ -38,27 +38,29 @@ public class WriteFileJson {
 
         log.info("Write to the database from a file in SalesAndTrafficReport.class successfully.");
 
-        int countTrafficyDate =0;
-        int countTrafficByAsin =0;
+        int countTrafficyDate = 0;
+        int countTrafficByAsin = 0;
         mongoTemplate.insert(report.getReportSpecification());
         log.info("->Write to the database from the file was saved successfully.");
         for (SalesAndTrafficByDate salesAndTrafficByDate : report.getSalesAndTrafficByDate()) {
             mongoTemplate.insert(salesAndTrafficByDate);
-            countTrafficyDate ++;
-        }log.info("->Write SalesAndTrafficByDate to the database from the file was saved successfully. Array "
+            countTrafficyDate++;
+        }
+        log.info("->Write SalesAndTrafficByDate to the database from the file was saved successfully. Array "
                 + countTrafficyDate);
 
         for (SalesAndTrafficByAsin salesAndTrafficByAsin : report.getSalesAndTrafficByAsin()) {
             mongoTemplate.insert(salesAndTrafficByAsin);
-            countTrafficByAsin ++;
+            countTrafficByAsin++;
 
-        }log.info("->Write to SalesAndTrafficByAsin the database from the file was saved successfully. Array "
+        }
+        log.info("->Write to SalesAndTrafficByAsin the database from the file was saved successfully. Array "
                 + countTrafficByAsin);
 
         return mongoTemplate.insert(report);
     }
 
-    public ResponseEntity<String> FileFromData(String date) {
+    public ResponseEntity<String> FineFromDate(String date) {
         MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
 
         // Создаем фильтр для поиска элементов массива, которые содержат только заданную дату
@@ -85,22 +87,6 @@ public class WriteFileJson {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

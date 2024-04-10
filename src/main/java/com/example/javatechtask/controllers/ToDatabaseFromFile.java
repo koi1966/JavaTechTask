@@ -19,8 +19,8 @@ public class ToDatabaseFromFile {
 
     private final WriteFileJson writeFileJson;
 
-    @GetMapping()
-//    @PostMapping()
+//    @GetMapping()
+    @PostMapping()
     public SalesAndTrafficReport addData() throws IOException {
         log.info("->Get request to write to db from file");
         SalesAndTrafficReport report = writeFileJson.WriteFileJsonPars();

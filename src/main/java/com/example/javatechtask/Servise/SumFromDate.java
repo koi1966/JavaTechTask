@@ -7,7 +7,6 @@ import com.example.javatechtask.models.TrafficByDate;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

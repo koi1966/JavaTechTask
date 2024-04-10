@@ -1,12 +1,8 @@
 package com.example.javatechtask.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
 
-@Setter
-@Getter
-
+@Data
 public class TrafficByDate{
     private int browserPageViews;
     private int browserPageViewsB2B;

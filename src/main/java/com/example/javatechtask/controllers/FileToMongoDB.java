@@ -1,6 +1,6 @@
 package com.example.javatechtask.controllers;
 
-import com.example.javatechtask.Servise.JsonToMongoDB;
+import com.example.javatechtask.Servise.arshiv.JsonToMongoDB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

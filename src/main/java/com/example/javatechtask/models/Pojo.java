@@ -1,13 +1,9 @@
 package com.example.javatechtask.models;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Setter
-@Getter
 @Document
 public class Pojo {
     private int money;

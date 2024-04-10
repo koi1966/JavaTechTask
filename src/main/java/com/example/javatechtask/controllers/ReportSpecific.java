@@ -17,7 +17,7 @@ public class ReportSpecific {
     @GetMapping
     public ResponseEntity<String> getReportByDate(@RequestParam("date") String date) {
         log.info("Search by this date - " + date);
-        return writeFileJson.FileFromData(date);
+        return writeFileJson.FineFromDate(date);
     }
 
 }
