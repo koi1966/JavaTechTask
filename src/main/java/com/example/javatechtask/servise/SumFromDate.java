@@ -1,4 +1,4 @@
-package com.example.javatechtask.Servise;
+package com.example.javatechtask.servise;
 
 import com.example.javatechtask.models.OrderedProductSales;
 import com.example.javatechtask.models.SalesAndTrafficByDate;

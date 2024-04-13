@@ -1,4 +1,4 @@
-package com.example.javatechtask.Servise;
+package com.example.javatechtask.servise;
 
 import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepository;

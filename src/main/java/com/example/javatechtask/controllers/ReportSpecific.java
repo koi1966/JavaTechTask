@@ -1,6 +1,6 @@
 package com.example.javatechtask.controllers;
 
-import com.example.javatechtask.Servise.WriteFileJson;
+import com.example.javatechtask.servise.WriteFileJson;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

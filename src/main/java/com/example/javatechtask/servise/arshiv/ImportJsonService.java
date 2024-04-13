@@ -1,4 +1,4 @@
-package com.example.javatechtask.Servise.arshiv;
+package com.example.javatechtask.servise.arshiv;
 
 import com.mongodb.MongoBulkWriteException;
 import org.bson.Document;

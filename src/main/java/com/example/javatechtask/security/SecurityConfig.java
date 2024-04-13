@@ -35,8 +35,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/report","/user/**").permitAll()
-                        .requestMatchers("/report/between").authenticated())
+                        .requestMatchers("/report/**","/user/**","/file").permitAll()
+                        .requestMatchers("/betwe").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();
     }

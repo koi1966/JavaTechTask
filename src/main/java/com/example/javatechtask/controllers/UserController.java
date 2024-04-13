@@ -1,6 +1,6 @@
 package com.example.javatechtask.controllers;
 
-import com.example.javatechtask.Servise.AppUser;
+import com.example.javatechtask.servise.AppUser;
 import com.example.javatechtask.models.User;
 import com.example.javatechtask.models.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
