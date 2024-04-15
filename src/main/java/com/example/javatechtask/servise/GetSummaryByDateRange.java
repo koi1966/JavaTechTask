@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,13 @@ public class GetSummaryByDateRange {
 //    public SalesAndTrafficByDate getSumByDateRange(LocalDate startDate, LocalDate endDate) {
     public Document getSumByDateRange(String startDate, String endDate) {
         // Строим запрос по начальной и конечной дате
-        Query query = new Query();
-        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
+//        Query query = new Query();
+//        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
 
         // Выполняем агрегацию
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(Criteria.where("date").gte(startDate).lte(endDate)),
+
                 Aggregation.group()
                         .sum("salesByDate.orderedProductSales.amount").as("totalOrderedProductSales")
                         .sum("salesByDate.orderedProductSalesB2B.amount").as("totalOrderedProductSalesB2B")

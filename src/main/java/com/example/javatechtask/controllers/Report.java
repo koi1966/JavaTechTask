@@ -9,6 +9,7 @@ import com.example.javatechtask.servise.AggregationService;
 import com.example.javatechtask.servise.GetSummaryByDateRange;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -82,6 +83,7 @@ public class Report {
     }
 
     @GetMapping("/test2")
+//    @PreAuthorize("hasAuthority('ROLE_USER')")
     public List<SalesAndTrafficByDate> getSumTest2(@RequestParam("startDate") String startDate,
                                                    @RequestParam("endDate") String endDate) {
         log.info(" aggregateSalesAndTraffic ");

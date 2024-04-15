@@ -39,7 +39,6 @@ public class UserController {
 
     @PostMapping("/new-user")
 //    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-
     public String addNewUserIntoDB(@RequestBody User user) {
 
         user.setId(UUID.randomUUID());
