@@ -7,6 +7,8 @@ import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
 import com.example.javatechtask.servise.AggregationService;
 import com.example.javatechtask.servise.GetSummaryByDateRange;
+import com.example.javatechtask.servise.SumFromDate;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,12 +26,13 @@ import java.util.List;
 public class Report {
 
     private final TrafficByDateRepository trafficByDateRepository;
-//    private final SumFromDate sumFromDate;
+    private final SumFromDate sumFromDate;
     private final AggregationService aggregationService;
     private final GetSummaryByDateRange getSummaryByDateRange;
 
-    public Report(TrafficByDateRepository trafficByDateRepository, AggregationService aggregationService, GetSummaryByDateRange getSummaryByDateRange) {
+    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService, GetSummaryByDateRange getSummaryByDateRange) {
         this.trafficByDateRepository = trafficByDateRepository;
+        this.sumFromDate = sumFromDate;
         this.aggregationService = aggregationService;
         this.getSummaryByDateRange = getSummaryByDateRange;
     }
@@ -63,15 +66,14 @@ public class Report {
         return null;
     }
 
-
     @GetMapping("/sum")
-    public Document getReportBetweenDaySum(@RequestParam("startDate") String startDate,
+    public SalesAndTrafficByDate getReportBetweenDaySum(@RequestParam("startDate") String startDate,
                                            @RequestParam("endDate") String endDate) {
 
         log.info("Search by this date and sum - " + startDate + " " + endDate);
 
-//        return sumFromDate.processDateRange(startDate, endDate);
-        return getSummaryByDateRange.getSumByDateRange(startDate, endDate);
+        return sumFromDate.processDateRange(startDate, endDate);
+//        return getSummaryByDateRange.getSumByDateRange(startDate, endDate);
     }
 
 

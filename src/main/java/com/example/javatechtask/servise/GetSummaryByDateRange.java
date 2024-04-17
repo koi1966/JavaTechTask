@@ -1,6 +1,7 @@
 package com.example.javatechtask.servise;
 
 import com.example.javatechtask.models.SalesAndTrafficByDate;
+import lombok.Data;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -11,14 +12,19 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+@Data
 @Service
 public class GetSummaryByDateRange {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+//    @Autowired
+    private final MongoTemplate mongoTemplate;
 
-//    public SalesAndTrafficByDate getSumByDateRange(LocalDate startDate, LocalDate endDate) {
+    public GetSummaryByDateRange(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
+
     public Document getSumByDateRange(String startDate, String endDate) {
+//    public Document getSumByDateRange(String startDate, String endDate) {
         // Строим запрос по начальной и конечной дате
 //        Query query = new Query();
 //        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
@@ -50,7 +56,10 @@ public class GetSummaryByDateRange {
                         .sum("trafficByDate.sessionsB2B").as("totalSessionsB2B")
         );
 
-        AggregationResults<SalesAndTrafficByDate> results = mongoTemplate.aggregate(aggregation, "salesAndTrafficByDate", SalesAndTrafficByDate.class);
+        AggregationResults<SalesAndTrafficByDate> results = mongoTemplate.aggregate(aggregation,
+                "salesAndTrafficByDate",
+                SalesAndTrafficByDate.class);
+
         return results.getRawResults();
 //        return results.getUniqueMappedResult();
     }

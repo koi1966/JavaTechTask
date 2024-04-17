@@ -16,7 +16,6 @@ public class SumFromDate {
 
     public SumFromDate(TrafficByDateRepository yourRepository) {
         this.trafficByDateRepository = yourRepository;
-
     }
 
     public SalesAndTrafficByDate processDateRange(String startDate, String endDate) {
