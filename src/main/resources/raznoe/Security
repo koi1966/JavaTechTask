@@ -41,3 +41,38 @@ Using MongoDB in a Spring Boot application
 https://www.work.ua/articles/jobseeker/3268/?utm_source=digest&utm_medium=email&utm_content=article1&utm_campaign=09.04.2024_824&commId=01HV1CY6N6E5BYQ7MWY16CSEA0
 
 git clone https://github.com/rajeshkawali/Springboot-mongodb-aggregation.git
+
+{
+https://www.mongodb.com/developer/code-examples/java/rest-apis-java-spring-boot/
+git clone https://github.com/mongodb-developer/java-spring-boot-mongodb-starter
+
+}
+
+
+https://github.com/leilei0220/MongoDB-MoreDataBase.git
+
+https://github.com/rachanaSane/mongodb-dbref.git
+
+*************************************************
+https://www.baeldung.com/queries-in-spring-data-mongodb
+*************************************************
+
+{
+        "_id" : ObjectId("55c0e5e5511f0a164a581908"),
+        "_class" : "org.baeldung.model.User",
+        "name" : "Antony",
+        "age" : 33
+    },
+    {
+        "_id" : ObjectId("55c0e5e5511f0a164a581909"),
+        "_class" : "org.baeldung.model.User",
+        "name" : "Alice",
+        "age" : 35
+    }
+
+Query query = new Query();
+query.addCriteria(Criteria.where("name").regex("^A"));
+List<User> users = mongoTemplate.find(query,User.class);
+
+
+*************************************************
