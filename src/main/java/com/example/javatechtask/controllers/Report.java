@@ -11,6 +11,7 @@ import com.example.javatechtask.servise.SumFromDate;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,4 +93,13 @@ public class Report {
         return aggregationService.aggregateSalesAndTraffic(startDate, endDate);
     }
 
+
+
+    @GetMapping("/getFindOneData")
+    //    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public ResponseEntity<String> getFindOneData(@RequestParam("startDate") String startDate,
+                                         @RequestParam("endDate") String endDate) {
+        log.info(" aggregateSalesAndTraffic ");
+        return getSummaryByDateRange.getFindOneData(startDate);//, endDate);
+    }
 }

@@ -1,8 +1,13 @@
 package com.example.javatechtask.servise;
 
 import com.example.javatechtask.models.SalesAndTrafficByDate;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Projections;
 import lombok.Data;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -10,6 +15,7 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Data
@@ -63,4 +69,39 @@ public class GetSummaryByDateRange {
         return results.getRawResults();
 //        return results.getUniqueMappedResult();
     }
+
+
+    public ResponseEntity<String> getFindOneData(String date) {
+        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
+        Bson filter = Filters.eq("salesAndTrafficByDate.date", date);
+
+//        Bson filter = Filters.and(
+//                Filters.gte("date", "2024-02-14"), // Больше или равно указанной даты
+//                Filters.lt("date", "2024-02-17")   // Меньше указанной даты
+//        );
+
+        // Создаем фильтр для поиска элементов массива, которые содержат только заданную дату
+        Bson arrayFilter = Filters.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
+
+        // Создаем проекцию, чтобы вернуть только элементы массива, которые удовлетворяют фильтру
+        Bson projection = Projections.elemMatch("salesAndTrafficByDate", Filters.eq("date", date));
+
+        // Применяем фильтр к коллекции
+        MongoCursor<Document> cursor = collection.find(arrayFilter)
+                .projection(projection)
+                .iterator();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+//            while (cursor.hasNext()) {
+//                Document doc = cursor.next();
+//                stringBuilder.append(doc.toJson()).append("\n");
+//            }
+            cursor.forEachRemaining(doc -> stringBuilder.append(doc.toJson()).append("\n"));
+        } finally {
+            cursor.close();
+        }
+        return ResponseEntity.ok(stringBuilder.toString());
+    }
+
 }
