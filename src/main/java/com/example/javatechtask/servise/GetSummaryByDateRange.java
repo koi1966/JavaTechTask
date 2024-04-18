@@ -1,6 +1,7 @@
 package com.example.javatechtask.servise;
 
 import com.example.javatechtask.models.SalesAndTrafficByDate;
+import com.example.javatechtask.models.SalesAndTrafficReport;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -17,6 +18,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Service
@@ -104,4 +108,32 @@ public class GetSummaryByDateRange {
         return ResponseEntity.ok(stringBuilder.toString());
     }
 
-}
+
+    public ResponseEntity<String> getFindDataBetweenDates(String startDate, String endDate) {
+        MongoCollection<Document> collection = mongoTemplate.getCollection("salesAndTrafficReport");
+
+        // Преобразование строковых дат в объекты LocalDate
+        LocalDate startLocalDate = LocalDate.parse(startDate, DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate endLocalDate = LocalDate.parse(endDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+        // Создание фильтра для выбора данных между датами
+        Bson filter = Filters.and(
+                Filters.gte("salesAndTrafficByDate.date", startLocalDate.toString()),
+                Filters.lte("salesAndTrafficByDate.date", endLocalDate.toString())
+        );
+
+        // Запрос к базе данных
+        MongoCursor<Document> cursor = collection.find(filter).iterator();
+
+        // Обработка результатов запроса
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            cursor.forEachRemaining(doc -> stringBuilder.append(doc.toJson()).append("\n"));
+        } finally {
+            cursor.close();
+        }
+        return ResponseEntity.ok(stringBuilder.toString());
+    }
+
+
+    }

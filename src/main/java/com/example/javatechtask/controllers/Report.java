@@ -100,6 +100,7 @@ public class Report {
     public ResponseEntity<String> getFindOneData(@RequestParam("startDate") String startDate,
                                          @RequestParam("endDate") String endDate) {
         log.info(" aggregateSalesAndTraffic ");
-        return getSummaryByDateRange.getFindOneData(startDate);//, endDate);
+        return getSummaryByDateRange.getFindDataBetweenDates(startDate,endDate);//, endDate);
+//        return getSummaryByDateRange.getFindOneData(startDate);//, endDate);
     }
 }
