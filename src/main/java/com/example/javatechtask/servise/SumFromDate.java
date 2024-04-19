@@ -50,6 +50,8 @@ public class SumFromDate {
 
         // Создаем экземпляр класса OrderedProductSales
         OrderedProductSales productSales;
+
+
         productSales = new OrderedProductSales();
         productSales.setAmount(totalSalesAmount);
         productSales.setCurrencyCode(totalSalesCurrencyCode);

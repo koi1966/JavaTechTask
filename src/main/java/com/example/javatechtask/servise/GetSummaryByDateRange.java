@@ -1,7 +1,10 @@
 package com.example.javatechtask.servise;
 
+import com.example.javatechtask.dtos.SalesAndTrafficByDateDTO;
+import com.example.javatechtask.models.OrderedProductSales;
 import com.example.javatechtask.models.SalesAndTrafficByDate;
-import com.example.javatechtask.models.SalesAndTrafficReport;
+import com.example.javatechtask.models.SalesByDate;
+import com.example.javatechtask.models.TrafficByDate;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -9,13 +12,10 @@ import com.mongodb.client.model.Projections;
 import lombok.Data;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +26,14 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class GetSummaryByDateRange {
 
-//    @Autowired
+    //    @Autowired
     private final MongoTemplate mongoTemplate;
 
     public GetSummaryByDateRange(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public Document getSumByDateRange(String startDate, String endDate) {
+    public SalesAndTrafficByDateDTO getSumByDateRange(String startDate, String endDate) {
 //    public Document getSumByDateRange(String startDate, String endDate) {
         // Строим запрос по начальной и конечной дате
 //        Query query = new Query();
@@ -70,7 +70,58 @@ public class GetSummaryByDateRange {
                 "salesAndTrafficByDate",
                 SalesAndTrafficByDate.class);
 
-        return results.getRawResults();
+        //*********************************************************
+        SalesAndTrafficByDateDTO instance = new SalesAndTrafficByDateDTO();
+        // Устанавливаем значение для поля date
+        instance.setDate("Sum between two dates " + startDate + " : " + endDate);
+
+        // Создаем экземпляр класса SalesByDate
+        SalesByDate salesByDate = new SalesByDate();
+
+
+        // Создаем экземпляр класса OrderedProductSales
+        OrderedProductSales productSales = new OrderedProductSales();
+        productSales.setAmount(totalSalesAmount);
+        productSales.setCurrencyCode(totalSalesCurrencyCode);
+
+        // Устанавливаем значения для полей класса SalesByDate
+        salesByDate.setUnitsOrdered(totalUnitsOrdered);
+        salesByDate.setUnitsOrdered(totalOrdersShipped);
+
+        //                  .getOrderedProductSales().setAmount(totalSales);
+//                setSalesByDate.setOrderedProductSales().setAmount(totalSales);
+//        result.getSalesByDate().getOrderedProductSales().setAmount(totalSales);
+//        result.getSalesByDate().setUnitsOrdered(totalUnitsOrdered);
+//        result.getSalesByDate().setOrdersShipped(totalOrdersShipped);
+//        result.getSalesByDate().getOrderedProductSales().setAmount(totalSales);
+//        result.getTrafficByDate().setBrowserPageViews(totalPageViews);
+//        result.getTrafficByDate().setMobileAppPageViews(totalMobileAppPageViews);
+
+        // Другие выводы или операции с результатами
+        salesByDate.setOrderedProductSales(productSales);
+// Устанавливаем объект SalesByDate в экземпляр класса SalesAndTrafficByDate
+        instance.setSalesByDate(salesByDate);
+
+
+        // Создаем экземпляр класса TrafficByDate
+        TrafficByDate trafficByDate = new TrafficByDate();
+        // Устанавливаем значения для полей класса TrafficByDate
+        // (если они есть и они необходимы)
+
+        // Устанавливаем объект TrafficByDate в экземпляр класса SalesAndTrafficByDate
+        instance.setTrafficByDate(trafficByDate);
+
+        // Теперь у вас есть экземпляр класса SalesAndTrafficByDate
+        // с заполненными полями date, salesByDate и trafficByDate
+
+
+        // Возвращаем список с одним элементом - объектом result
+        return instance;
+
+        // ******************************************************
+
+
+        //return results.getRawResults();
 //        return results.getUniqueMappedResult();
     }
 
@@ -116,10 +167,15 @@ public class GetSummaryByDateRange {
         LocalDate startLocalDate = LocalDate.parse(startDate, DateTimeFormatter.ISO_LOCAL_DATE);
         LocalDate endLocalDate = LocalDate.parse(endDate, DateTimeFormatter.ISO_LOCAL_DATE);
 
+        System.out.println("***********************************");
+        System.out.println(startLocalDate.toString());
+        System.out.println("***********************************");
         // Создание фильтра для выбора данных между датами
         Bson filter = Filters.and(
-                Filters.gte("salesAndTrafficByDate.date", startLocalDate.toString()),
-                Filters.lte("salesAndTrafficByDate.date", endLocalDate.toString())
+//                Filters.gte("salesAndTrafficReport.salesAndTrafficByDate.date", startLocalDate.toString()),
+                Filters.gte("salesAndTrafficByDate.date", startDate),
+//                Filters.lte("salesAndTrafficReport.salesAndTrafficByDate.date", endLocalDate.toString())
+                Filters.lte("salesAndTrafficByDate.date", endDate)
         );
 
         // Запрос к базе данных
@@ -136,4 +192,4 @@ public class GetSummaryByDateRange {
     }
 
 
-    }
+}

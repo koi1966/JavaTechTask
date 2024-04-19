@@ -1,6 +1,5 @@
 package com.example.javatechtask.servise;
 
-
 import com.example.javatechtask.models.SalesAndTrafficByDate;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;

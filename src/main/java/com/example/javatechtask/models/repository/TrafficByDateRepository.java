@@ -16,7 +16,7 @@ public interface TrafficByDateRepository extends MongoRepository<SalesAndTraffic
 //    @Query("{ 'date' : ?0 }")
     List<SalesAndTrafficByDate> findByDate(String date);
 
-    @Query("{ 'date' : { $gt: ?0, $lt: ?1 } }")
+    @Query("{ 'date' : { $gte: ?0, $lte: ?1 } }")
     List<SalesAndTrafficByDate> findByDateRange(String startDate, String endDate);
 
 //    https://www.baeldung.com/queries-in-spring-data-mongodb
