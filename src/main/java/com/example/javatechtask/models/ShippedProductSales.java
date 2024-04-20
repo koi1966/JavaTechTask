@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ShippedProductSales {
-    public double amount;
-    public String currencyCode;
+    private double amount;
+    private String currencyCode;
 }

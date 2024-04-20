@@ -3,6 +3,7 @@ package com.example.javatechtask.controllers;
 
 //import com.example.javatechtask.models.repository.ReportRepository;
 
+import com.example.javatechtask.dtos.SalesAndTrafficByDateDTO;
 import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
 import com.example.javatechtask.servise.AggregationService;
@@ -68,13 +69,13 @@ public class Report {
     }
 
     @GetMapping("/sum")
-    public SalesAndTrafficByDate getReportBetweenDaySum(@RequestParam("startDate") String startDate,
-                                           @RequestParam("endDate") String endDate) {
+    public String getReportBetweenDaySum(@RequestParam("startDate") String startDate,
+                                                           @RequestParam("endDate") String endDate) {
 
         log.info("Search by this date and sum - " + startDate + " " + endDate);
 
-        return sumFromDate.processDateRange(startDate, endDate);
-//        return getSummaryByDateRange.getSumByDateRange(startDate, endDate);
+//        return sumFromDate.processDateRange(startDate, endDate);
+        return getSummaryByDateRange.getSumByDateRange(startDate, endDate).toString();
     }
 
 

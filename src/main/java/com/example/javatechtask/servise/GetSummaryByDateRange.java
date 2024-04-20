@@ -1,10 +1,6 @@
 package com.example.javatechtask.servise;
 
-import com.example.javatechtask.dtos.SalesAndTrafficByDateDTO;
-import com.example.javatechtask.models.OrderedProductSales;
-import com.example.javatechtask.models.SalesAndTrafficByDate;
-import com.example.javatechtask.models.SalesByDate;
-import com.example.javatechtask.models.TrafficByDate;
+import com.example.javatechtask.dtos.TotalSaletByDateDTO;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -21,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Data
 @Service
@@ -33,18 +30,14 @@ public class GetSummaryByDateRange {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public SalesAndTrafficByDateDTO getSumByDateRange(String startDate, String endDate) {
-//    public Document getSumByDateRange(String startDate, String endDate) {
-        // Строим запрос по начальной и конечной дате
-//        Query query = new Query();
-//        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
+    public String getSumByDateRange(String startDate, String endDate) {
 
         // Выполняем агрегацию
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(Criteria.where("date").gte(startDate).lte(endDate)),
 
                 Aggregation.group()
-                        .sum("salesByDate.orderedProductSales.amount").as("totalOrderedProductSales")
+                        .sum("salesByDate.orderedProductSales.amount").as("totalOrderedProductSalesAmount")
                         .sum("salesByDate.orderedProductSalesB2B.amount").as("totalOrderedProductSalesB2B")
                         .sum("salesByDate.unitsOrdered").as("totalUnitsOrdered")
                         .sum("salesByDate.unitsOrderedB2B").as("totalUnitsOrderedB2B")
@@ -66,57 +59,46 @@ public class GetSummaryByDateRange {
                         .sum("trafficByDate.sessionsB2B").as("totalSessionsB2B")
         );
 
-        AggregationResults<SalesAndTrafficByDate> results = mongoTemplate.aggregate(aggregation,
-                "salesAndTrafficByDate",
-                SalesAndTrafficByDate.class);
+        AggregationResults<TotalSaletByDateDTO> results =
+                mongoTemplate.aggregate(aggregation,
+                        "salesAndTrafficByDate",
+                        TotalSaletByDateDTO.class);
 
-        //*********************************************************
-        SalesAndTrafficByDateDTO instance = new SalesAndTrafficByDateDTO();
-        // Устанавливаем значение для поля date
-        instance.setDate("Sum between two dates " + startDate + " : " + endDate);
-
-        // Создаем экземпляр класса SalesByDate
-        SalesByDate salesByDate = new SalesByDate();
+        mongoTemplate.insert(Objects.requireNonNull(results.getUniqueMappedResult())
+                ,"salesAndTrafficByDate "+startDate+ " " +endDate);
 
 
-        // Создаем экземпляр класса OrderedProductSales
-        OrderedProductSales productSales = new OrderedProductSales();
-        productSales.setAmount(totalSalesAmount);
-        productSales.setCurrencyCode(totalSalesCurrencyCode);
 
-        // Устанавливаем значения для полей класса SalesByDate
-        salesByDate.setUnitsOrdered(totalUnitsOrdered);
-        salesByDate.setUnitsOrdered(totalOrdersShipped);
+//         results.getRawResults().toJson();
+//        ToyalSaletByDateDTO uniqueMappedResult = results.getUniqueMappedResult();
+        TotalSaletByDateDTO uniqueMappedResult = results.getUniqueMappedResult();
 
-        //                  .getOrderedProductSales().setAmount(totalSales);
-//                setSalesByDate.setOrderedProductSales().setAmount(totalSales);
-//        result.getSalesByDate().getOrderedProductSales().setAmount(totalSales);
-//        result.getSalesByDate().setUnitsOrdered(totalUnitsOrdered);
-//        result.getSalesByDate().setOrdersShipped(totalOrdersShipped);
-//        result.getSalesByDate().getOrderedProductSales().setAmount(totalSales);
-//        result.getTrafficByDate().setBrowserPageViews(totalPageViews);
-//        result.getTrafficByDate().setMobileAppPageViews(totalMobileAppPageViews);
+//        String resultJson = results.getRawResults().toJson(); //resultsArray.get(0).getAsJsonObject();
 
-        // Другие выводы или операции с результатами
-        salesByDate.setOrderedProductSales(productSales);
-// Устанавливаем объект SalesByDate в экземпляр класса SalesAndTrafficByDate
-        instance.setSalesByDate(salesByDate);
+// Создаем ObjectMapper
+//        ObjectMapper objectMapper = new ObjectMapper();
 
+//        try {
+//            // Преобразуем JSON-строку в JsonNode
+//            JsonNode jsonNode = objectMapper.readTree(resultJson);
+//
+//            // Получаем значения полей
+//            double totalOrderedProductSalesAmount = jsonNode.get("totalOrderedProductSalesAmount").asDouble();
+//            double totalOrderedProductSalesB2B = jsonNode.get("totalOrderedProductSalesB2B").asDouble();
+//            // Продолжайте для других полей
+//
+//            // Делайте что-то с полученными значениями, например, выводите их
+//            System.out.println("Total Ordered Product Sales Amount: " + totalOrderedProductSalesAmount);
+//            System.out.println("Total Ordered Product Sales B2B: " + totalOrderedProductSalesB2B);
+//            // Выводите другие поля аналогичным образом
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        // Создаем экземпляр класса TrafficByDate
-        TrafficByDate trafficByDate = new TrafficByDate();
-        // Устанавливаем значения для полей класса TrafficByDate
-        // (если они есть и они необходимы)
+        // Создаем ObjectMapper
 
-        // Устанавливаем объект TrafficByDate в экземпляр класса SalesAndTrafficByDate
-        instance.setTrafficByDate(trafficByDate);
-
-        // Теперь у вас есть экземпляр класса SalesAndTrafficByDate
-        // с заполненными полями date, salesByDate и trafficByDate
-
-
-        // Возвращаем список с одним элементом - объектом result
-        return instance;
+//        return results.getUniqueMappedResult();
+        return results.getRawResults().toJson();
 
         // ******************************************************
 

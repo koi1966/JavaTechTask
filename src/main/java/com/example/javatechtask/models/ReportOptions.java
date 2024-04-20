@@ -5,6 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 public class ReportOptions {
-    public String dateGranularity;
-    public String asinGranularity;
+    private String dateGranularity;
+    private String asinGranularity;
 }

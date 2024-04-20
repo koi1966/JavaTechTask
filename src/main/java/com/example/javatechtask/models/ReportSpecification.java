@@ -12,9 +12,9 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Document(collection = "reportSpecification")
 public class ReportSpecification {
-    public String reportType;
-    public ReportOptions reportOptions;
-    public String dataStartTime;
-    public String dataEndTime;
-    public ArrayList<String> marketplaceIds;
+    private String reportType;
+    private ReportOptions reportOptions;
+    private String dataStartTime;
+    private String dataEndTime;
+    private ArrayList<String> marketplaceIds;
 }

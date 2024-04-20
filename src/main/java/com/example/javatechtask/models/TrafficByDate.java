@@ -17,14 +17,14 @@ public class TrafficByDate{
     private int sessions;
     private int sessionsB2B;
     private double buyBoxPercentage;
-    public double buyBoxPercentageB2B;
-    public double orderItemSessionPercentage;
-    public double orderItemSessionPercentageB2B;
-    public double unitSessionPercentage;
-    public double unitSessionPercentageB2B;
-    public int averageOfferCount;
-    public int averageParentItems;
-    public int feedbackReceived;
-    public int negativeFeedbackReceived;
-    public int receivedNegativeFeedbackRate;
+    private double buyBoxPercentageB2B;
+    private double orderItemSessionPercentage;
+    private double orderItemSessionPercentageB2B;
+    private double unitSessionPercentage;
+    private double unitSessionPercentageB2B;
+    private int averageOfferCount;
+    private int averageParentItems;
+    private int feedbackReceived;
+    private int negativeFeedbackReceived;
+    private int receivedNegativeFeedbackRate;
 }

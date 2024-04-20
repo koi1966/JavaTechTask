@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Document(collection = "salesAndTrafficReport")
 public class SalesAndTrafficReport {
-    public ReportSpecification reportSpecification;
-    public ArrayList<SalesAndTrafficByDate> salesAndTrafficByDate;
-    public ArrayList<SalesAndTrafficByAsin> salesAndTrafficByAsin;
+    private ReportSpecification reportSpecification;
+    private ArrayList<SalesAndTrafficByDate> salesAndTrafficByDate;
+    private ArrayList<SalesAndTrafficByAsin> salesAndTrafficByAsin;
 }

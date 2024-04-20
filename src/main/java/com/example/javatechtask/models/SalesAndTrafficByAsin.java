@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Document(collection = "salesAndTrafficByAsin")
 public class SalesAndTrafficByAsin {
-    public String parentAsin;
-    public SalesByAsin salesByAsin;
-    public TrafficByAsin trafficByAsin;
+    private String parentAsin;
+    private SalesByAsin salesByAsin;
+    private TrafficByAsin trafficByAsin;
 }

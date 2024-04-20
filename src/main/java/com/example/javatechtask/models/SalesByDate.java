@@ -2,7 +2,7 @@ package com.example.javatechtask.models;
 
 import lombok.Data;
 
-//@Data
+@Data
 public class SalesByDate {
     private OrderedProductSales orderedProductSales;
     private OrderedProductSalesB2B orderedProductSalesB2B;
@@ -11,16 +11,16 @@ public class SalesByDate {
     private int totalOrderItems;
     private int totalOrderItemsB2B;
     private AverageSalesPerOrderItem averageSalesPerOrderItem;
-    public AverageSalesPerOrderItemB2B averageSalesPerOrderItemB2B;
-    public double averageUnitsPerOrderItem;
-    public double averageUnitsPerOrderItemB2B;
-    public AverageSellingPrice averageSellingPrice;
-    public AverageSellingPriceB2B averageSellingPriceB2B;
-    public int unitsRefunded;
-    public double refundRate;
-    public int claimsGranted;
-    public ClaimsAmount claimsAmount;
-    public ShippedProductSales shippedProductSales;
-    public int unitsShipped;
-    public int ordersShipped;
+    private AverageSalesPerOrderItemB2B averageSalesPerOrderItemB2B;
+    private double averageUnitsPerOrderItem;
+    private double averageUnitsPerOrderItemB2B;
+    private AverageSellingPrice averageSellingPrice;
+    private AverageSellingPriceB2B averageSellingPriceB2B;
+    private int unitsRefunded;
+    private double refundRate;
+    private int claimsGranted;
+    private ClaimsAmount claimsAmount;
+    private ShippedProductSales shippedProductSales;
+    private int unitsShipped;
+    private int ordersShipped;
 }

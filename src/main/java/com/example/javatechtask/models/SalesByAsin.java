@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class SalesByAsin {
-    public int unitsOrdered;
-    public int unitsOrderedB2B;
-    public OrderedProductSales orderedProductSales;
-    public OrderedProductSalesB2B orderedProductSalesB2B;
-    public int totalOrderItems;
-    public int totalOrderItemsB2B;
+    private int unitsOrdered;
+    private int unitsOrderedB2B;
+    private OrderedProductSales orderedProductSales;
+    private OrderedProductSalesB2B orderedProductSalesB2B;
+    private int totalOrderItems;
+    private int totalOrderItemsB2B;
 }

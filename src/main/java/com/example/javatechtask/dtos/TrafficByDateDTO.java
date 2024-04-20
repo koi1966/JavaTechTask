@@ -3,32 +3,31 @@ package com.example.javatechtask.dtos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public record TrafficByDateDTO(
-        int browserPageViews,
-        int browserPageViewsB2B,
-        int mobileAppPageViews,
-        int mobileAppPageViewsB2B,
-        int pageViews,
-        int pageViewsB2B,
-        int browserSessions,
-        int browserSessionsB2B,
-        int mobileAppSessions,
-        int mobileAppSessionsB2B,
-        int sessions,
-        int sessionsB2B,
-        double buyBoxPercentage,
-        double buyBoxPercentageB2B,
-        double orderItemSessionPercentage,
-        double orderItemSessionPercentageB2B,
-        double unitSessionPercentage,
-        double unitSessionPercentageB2B,
-        int averageOfferCount,
-        int averageParentItems,
-        int feedbackReceived,
-        int negativeFeedbackReceived,
-        int receivedNegativeFeedbackRate
-) {
+public class TrafficByDateDTO {
+
+     private int browserPageViews;
+     private int browserPageViewsB2B;
+     private int mobileAppPageViews;
+     private int mobileAppPageViewsB2B;
+     private int pageViews;
+     private int pageViewsB2B;
+     private int browserSessions;
+     private int browserSessionsB2B;
+     private int mobileAppSessions;
+     private int mobileAppSessionsB2B;
+     private int sessions;
+     private int sessionsB2B;
+     private double buyBoxPercentage;
+     private double buyBoxPercentageB2B;
+     private double orderItemSessionPercentage;
+     private double orderItemSessionPercentageB2B;
+     private double unitSessionPercentage;
+     private double unitSessionPercentageB2B;
+     private int averageOfferCount;
+     private int averageParentItems;
+     private int feedbackReceived;
+     private int negativeFeedbackReceived;
+     private int receivedNegativeFeedbackRat;
 
 }

@@ -3,11 +3,9 @@ package com.example.javatechtask.dtos;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public record ClaimsAmountDTO(
-         int amount,
-         String currencyCode
-) {
+public class ClaimsAmountDTO{
+     private  int amount;
+     private  String currencyCode;
 
 }

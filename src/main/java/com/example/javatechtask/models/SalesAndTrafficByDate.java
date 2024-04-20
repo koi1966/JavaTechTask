@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Document(collection = "salesAndTrafficByDate")
 @EnableMongoRepositories
 public class SalesAndTrafficByDate {
+
     private String date;
     private SalesByDate salesByDate;
     private TrafficByDate trafficByDate;

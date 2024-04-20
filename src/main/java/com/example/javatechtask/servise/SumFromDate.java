@@ -36,8 +36,8 @@ public class SumFromDate {
             totalSalesCurrencyCode = entity.getSalesByDate().getOrderedProductSales().getCurrencyCode();
             totalUnitsOrdered += entity.getSalesByDate().getUnitsOrdered();
             totalOrdersShipped += entity.getSalesByDate().getOrdersShipped();
-            totalPageViews += entity.getTrafficByDate().getBrowserPageViews();
-            totalMobileAppPageViews += entity.getTrafficByDate().getMobileAppPageViews();
+//            totalPageViews += entity.getTrafficByDate().getBrowserPageViews();
+//            totalMobileAppPageViews += entity.getTrafficByDate().getMobileAppPageViews();
             // Другие операции с данными
         }
 

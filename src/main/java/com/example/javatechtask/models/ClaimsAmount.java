@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ClaimsAmount {
-    public int amount;
-    public String currencyCode;
+    private int amount;
+    private String currencyCode;
 }
