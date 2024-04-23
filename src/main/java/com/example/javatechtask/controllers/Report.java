@@ -5,9 +5,11 @@ package com.example.javatechtask.controllers;
 
 import com.example.javatechtask.dtos.SalesAndTrafficByDateDTO;
 import com.example.javatechtask.models.SalesAndTrafficByDate;
+import com.example.javatechtask.models.repository.SalesAndTrafficByDateRepository;
 import com.example.javatechtask.models.repository.TrafficByDateRepository;
 import com.example.javatechtask.servise.AggregationService;
 import com.example.javatechtask.servise.GetSummaryByDateRange;
+import com.example.javatechtask.servise.SalesAndTrafficReport;
 import com.example.javatechtask.servise.SumFromDate;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -31,12 +33,16 @@ public class Report {
     private final SumFromDate sumFromDate;
     private final AggregationService aggregationService;
     private final GetSummaryByDateRange getSummaryByDateRange;
+    private final SalesAndTrafficByDateRepository salesAndTrafficByDateRepository;
+    private final SalesAndTrafficReport report;
 
-    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService, GetSummaryByDateRange getSummaryByDateRange) {
+    public Report(TrafficByDateRepository trafficByDateRepository, SumFromDate sumFromDate, AggregationService aggregationService, GetSummaryByDateRange getSummaryByDateRange, SalesAndTrafficByDateRepository salesAndTrafficByDateRepository, SalesAndTrafficReport report) {
         this.trafficByDateRepository = trafficByDateRepository;
         this.sumFromDate = sumFromDate;
         this.aggregationService = aggregationService;
         this.getSummaryByDateRange = getSummaryByDateRange;
+        this.salesAndTrafficByDateRepository = salesAndTrafficByDateRepository;
+        this.report = report;
     }
 
     @GetMapping
@@ -101,7 +107,18 @@ public class Report {
     public ResponseEntity<String> getFindOneData(@RequestParam("startDate") String startDate,
                                          @RequestParam("endDate") String endDate) {
         log.info(" aggregateSalesAndTraffic ");
-        return getSummaryByDateRange.getFindDataBetweenDates(startDate,endDate);//, endDate);
-//        return getSummaryByDateRange.getFindOneData(startDate);//, endDate);
+//        return getSummaryByDateRange.getFindDataBetweenDates(startDate,endDate);//, endDate);
+        return getSummaryByDateRange.getFindOneData(startDate);//, endDate);
+    }
+
+
+    @GetMapping("/dataQuery")
+    //    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public SalesAndTrafficByDateDTO getFindOneData1(@RequestParam("startDate") String startDate,
+                                                 @RequestParam("endDate") String endDate) {
+        log.info(" aggregateSalesAndTraffic ");
+
+        return getSummaryByDateRange.getFindOneData1(startDate);
+//            return salesAndTrafficByDateRepository.findByDateBetween(startDate, endDate);
     }
 }

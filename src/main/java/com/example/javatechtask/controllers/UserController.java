@@ -25,24 +25,12 @@ public class UserController {
         return userRepository.findAll();
     }
 
-//    @GetMapping
-//    public ResponseEntity<User> getUserByName(@RequestParam String name) {
-//
-//        var user = userRepo.findByName(name);
-//        if (user == null) {
-//            return ResponseEntity
-//                    .status(HttpStatusCode.valueOf(404))
-//                    .build();
-//        }
-//        return new ResponseEntity<>(user, HttpStatusCode.valueOf(200));
-//    }
 
     @PostMapping("/new-user")
 //    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String addNewUserIntoDB(@RequestBody User user) {
 
         user.setId(UUID.randomUUID());
-//        userRepo.save(user);
         appUser.addUser(user);
         return "New user is saved.";
     }

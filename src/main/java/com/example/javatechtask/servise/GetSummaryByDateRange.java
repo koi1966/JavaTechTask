@@ -1,6 +1,8 @@
 package com.example.javatechtask.servise;
 
+import com.example.javatechtask.dtos.SalesAndTrafficByDateDTO;
 import com.example.javatechtask.dtos.TotalSaletByDateDTO;
+import com.example.javatechtask.models.SalesAndTrafficByDate;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Filters;
@@ -12,11 +14,13 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -67,10 +71,8 @@ public class GetSummaryByDateRange {
         mongoTemplate.insert(Objects.requireNonNull(results.getUniqueMappedResult())
                 ,"salesAndTrafficByDate "+startDate+ " " +endDate);
 
-
-
 //         results.getRawResults().toJson();
-//        ToyalSaletByDateDTO uniqueMappedResult = results.getUniqueMappedResult();
+
         TotalSaletByDateDTO uniqueMappedResult = results.getUniqueMappedResult();
 
 //        String resultJson = results.getRawResults().toJson(); //resultsArray.get(0).getAsJsonObject();
@@ -170,8 +172,18 @@ public class GetSummaryByDateRange {
         } finally {
             cursor.close();
         }
+
+
         return ResponseEntity.ok(stringBuilder.toString());
     }
+    public SalesAndTrafficByDateDTO getFindOneData1(String date) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("date").regex(date));
+        List<SalesAndTrafficByDateDTO> users = mongoTemplate.find(query, SalesAndTrafficByDateDTO.class);
 
+        mongoTemplate.insert(Objects.requireNonNull(users.get(0))
+                ,"salesAndTrafficByDate "+date+ " " +date);
 
+        return  null;
+    }
 }
